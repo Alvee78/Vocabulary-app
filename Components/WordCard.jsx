@@ -1,35 +1,42 @@
-// Component/WordCard.jsx
-
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
-export default function WordCard({ word, meaning }) {
+export default function WordCard({ word, meaning, example }) {
   return (
     <View style={styles.card}>
       <Text style={styles.word}>{word}</Text>
       <Text style={styles.meaning}>{meaning}</Text>
+      <Text style={styles.example}>Example: {example}</Text>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   card: {
-    backgroundColor: '#fff',
-    borderRadius: 16,
-    padding: 16,
-    marginBottom: 16,
+    backgroundColor: '#f9f9f9',
+    borderRadius: 20,
+    padding: 20,
+    marginBottom: 20,
     shadowColor: '#000',
+    shadowOffset: { width: 0, height: 3 },
     shadowOpacity: 0.1,
-    shadowRadius: 8,
-    elevation: 3,
+    shadowRadius: 6,
+    elevation: 5,
   },
   word: {
-    fontSize: 20,
-    fontWeight: 'bold',
+    fontSize: 22,
+    fontWeight: '700',
+    color: '#1a1a1a',
   },
   meaning: {
+    fontSize: 18,
+    color: '#444',
+    marginTop: 8,
+  },
+  example: {
     fontSize: 16,
-    color: '#555',
-    marginTop: 4,
+    fontStyle: 'italic',
+    color: '#666',
+    marginTop: 12,
   },
 });

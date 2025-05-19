@@ -23,7 +23,7 @@ export default function learnPage() {
       <FlatList
         data={currentWords}
         renderItem={({ item }) => (
-          <WordCard word={item.word} meaning={item.meaning} />
+          <WordCard word={item.word} meaning={item.meaning} example={item.example} />
         )}
         keyExtractor={(item, index) => index.toString()}
         contentContainerStyle={styles.scroll}
