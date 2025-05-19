@@ -5,7 +5,24 @@ import { Ionicons } from '@expo/vector-icons';
 
 export default function TabLayout() {
   return (
-    <Tabs  screenOptions={{ tabBarActiveTintColor:'tomato', tabBarInactiveTintColor:'grey'}} >
+    <Tabs  screenOptions={{ 
+      // Tab Bar Style
+      tabBarStyle: {
+        height: 60,
+        paddingBottom: 5,
+        paddingTop: 5,
+        backgroundColor: '#fff5f0',
+        borderTopWidth: 1,
+        borderTopColor: '#ffe4d6',
+        elevation: 8,
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: -2 },
+        shadowOpacity: 0.1,
+      },
+      // Active/Inactive tint color
+      tabBarActiveTintColor:'tomato', 
+      tabBarInactiveTintColor:'grey'
+    }}>
         <Tabs.Screen name="index" options={{ title: 'Home' , tabBarIcon: ({color})=>(<Ionicons name='home' size={24} color={color}/> )}} />
         <Tabs.Screen name="rewards" options={{ title: 'Rewards' , tabBarIcon: ({color})=>(<Ionicons name='trophy' size={24} color={color}/>) }} />
         <Tabs.Screen name="settings" options={{ title: 'Settings' , tabBarIcon: ({color})=>(<Ionicons name='settings' size={24} color={color}/>) }} />

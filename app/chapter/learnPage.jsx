@@ -55,7 +55,10 @@ export default function learnPage() {
         {page < totalPages ? (
           <Button title="Next" onPress={() => setPage(page + 1)} />
         ) : (
-          <Button title="Start Quiz" onPress={() => router.push(`/chapter/quiz`)} />
+          <Button title="Start Quiz" onPress={() => router.push({
+            pathname:`/quiz/quiz`,
+            params: { chapterNo: id }
+          })} />
         )}
       </View>
     </View>
