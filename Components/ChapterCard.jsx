@@ -23,7 +23,7 @@ export default function ChapterCard({ title,descriptions, unlocked, onPress }) {
     </TouchableOpacity>
   )
 }
-
+ 
 const styles = StyleSheet.create({
   card: {
     width: '97%',

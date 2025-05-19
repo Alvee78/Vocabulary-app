@@ -9,4 +9,4 @@ export default function settings() {
   )
 }
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({}) 

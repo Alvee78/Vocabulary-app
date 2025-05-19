@@ -9,4 +9,4 @@ export default function rewards() {
   )
 }
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({}) 

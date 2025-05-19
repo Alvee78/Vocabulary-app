@@ -8,7 +8,7 @@ const Quiz = () => {
   const [submitted, setSubmitted] = useState(false);
   const numberOfQuestions = 5;
   const { chapterNo } = useLocalSearchParams();
-
+ 
   const data = useMemo(() => {
     const initialData = quizData[chapterNo];
     return [...initialData].sort(() => Math.random() - 0.5).slice(0, numberOfQuestions);

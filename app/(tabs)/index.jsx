@@ -7,7 +7,7 @@ export default function Home() {
   const router = useRouter();
   return (
     <View style={styles.container}>
-      <FlatList
+      <FlatList 
         data={chapters}
         renderItem={({ item }) => (
           <ChapterCard

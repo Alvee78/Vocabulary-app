@@ -18,7 +18,7 @@ export default function RootLayout() {
     </Stack>
   )
 }
-
+ 
 const styles = StyleSheet.create({
   headerTitle: {
     fontSize: 20,
