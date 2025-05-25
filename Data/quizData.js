@@ -90,6 +90,7 @@ export const quizData = {
         options: ['রান্না করা', 'খাওয়া', 'পরিস্কার করা', 'গরম করা'],
         correctAnswer: 'রান্না করা',
     },
+    
     ],
 
     2: [
@@ -120,7 +121,7 @@ export const quizData = {
     {
         id: 5,
         question: "What is the meaning of 'Nervous'?",
-        options: ["ভীত বা চিন্তিত", "রাগান্বিত", "একাকী", "কৃতজ্ঞ"],
+        options: ["চিন্তিত বা ভীত", "রাগান্বিত", "একাকী", "কৃতজ্ঞ"],
         correctAnswer: "চিন্তিত বা ভীত",
     },
     {

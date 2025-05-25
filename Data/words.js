@@ -76,8 +76,383 @@ const words = {
       word: "Cook",
       meaning: "রান্না করা",
       example: "He likes to cook Italian food."
+    },
+    {
+    "word": "Sleep",
+    "meaning": "ঘুমানো",
+    "example": "I usually sleep at 10 PM."
+    },
+    {
+      "word": "Walk",
+      "meaning": "হাঁটা",
+      "example": "They walk to school every day."
+    },
+    {
+      "word": "Dog",
+      "meaning": "কুকুর",
+      "example": "The dog barked loudly."
+    },
+    {
+      "word": "Cat",
+      "meaning": "বিড়াল",
+      "example": "Her cat loves to sleep on the couch."
+    },
+    {
+      "word": "Sun",
+      "meaning": "সূর্য",
+      "example": "The sun rises in the east."
+    },
+    {
+      "word": "Moon",
+      "meaning": "চাঁদ",
+      "example": "The moon is bright tonight."
+    },
+    {
+      "word": "Star",
+      "meaning": "তারা",
+      "example": "I saw a shooting star last night."
+    },
+    {
+      "word": "Pen",
+      "meaning": "কলম",
+      "example": "He wrote the note with a blue pen."
+    },
+    {
+      "word": "School",
+      "meaning": "স্কুল",
+      "example": "My brother goes to school by bus."
+    },
+    {
+      "word": "Teacher",
+      "meaning": "শিক্ষক",
+      "example": "Our teacher gave us homework."
+    },
+    {
+      "word": "Apple",
+      "meaning": "আপেল",
+      "example": "She ate a red apple."
+    },
+    {
+      "word": "Ball",
+      "meaning": "বল",
+      "example": "The child kicked the ball."
+    },
+    {
+      "word": "Bird",
+      "meaning": "পাখি",
+      "example": "A bird is sitting on the tree."
+    },
+    {
+      "word": "Car",
+      "meaning": "গাড়ি",
+      "example": "He drives a blue car."
+    },
+    {
+      "word": "House",
+      "meaning": "বাড়ি",
+      "example": "They live in a big house."
+    },
+    {
+      "word": "Clean",
+      "meaning": "পরিষ্কার করা",
+      "example": "She helps her mother clean the room."
+    },
+    {
+      "word": "Jump",
+      "meaning": "লাফানো",
+      "example": "The boy can jump very high."
+    },
+    {
+      "word": "Sing",
+      "meaning": "গান গাওয়া",
+      "example": "He likes to sing in the shower."
+    },
+    {
+      "word": "Dance",
+      "meaning": "নাচা",
+      "example": "They dance at the party."
+    },
+    {
+      "word": "Help",
+      "meaning": "সাহায্য করা",
+      "example": "Can you help me with my homework?"
+    },
+    {
+      "word": "Wash",
+      "meaning": "ধোয়া",
+      "example": "Wash your hands before eating."
+    },
+    {
+      "word": "Listen",
+      "meaning": "শোনা",
+      "example": "Listen to the teacher carefully."
+    },
+    {
+      "word": "Write",
+      "meaning": "লেখা",
+      "example": "She loves to write stories."
+    },
+    {
+      "word": "Read",
+      "meaning": "পড়া",
+      "example": "He can read very fast."
+    },
+    {
+      "word": "Draw",
+      "meaning": "আঁকা",
+      "example": "I like to draw pictures of animals."
+    },
+    {
+      "word": "Close",
+      "meaning": "বন্ধ করা",
+      "example": "Please close the door."
+    },
+    {
+      "word": "Open",
+      "meaning": "খোলা",
+      "example": "Open your book to page five."
+    },
+    {
+      "word": "Push",
+      "meaning": "ধাক্কা দেওয়া",
+      "example": "Push the door to enter."
+    },
+    {
+      "word": "Pull",
+      "meaning": "টানা",
+      "example": "Pull the drawer to get the spoon."
+    },
+    {
+      "word": "Call",
+      "meaning": "ফোন করা / ডাক দেওয়া",
+      "example": "Call me when you get home."
+    },
+    {
+      "word": "Stand",
+      "meaning": "দাঁড়ানো",
+      "example": "Please stand in a line."
+    },
+    {
+      "word": "Sit",
+      "meaning": "বসা",
+      "example": "Sit down and relax."
+    },
+    {
+      "word": "Ride",
+      "meaning": "চড়া",
+      "example": "He can ride a bicycle."
+    },
+    {
+      "word": "Buy",
+      "meaning": "কেনা",
+      "example": "She wants to buy a new dress."
+    },
+    {
+      "word": "Sell",
+      "meaning": "বিক্রি করা",
+      "example": "They sell fruits at the market."
+    },
+    {
+      "word": "Wear",
+      "meaning": "পরিধান করা",
+      "example": "I wear a jacket when it’s cold."
+    },
+    {
+      "word": "Look",
+      "meaning": "দেখা",
+      "example": "Look at the board."
+    },
+    {
+      "word": "Watch",
+      "meaning": "দেখা (মনোযোগ দিয়ে)",
+      "example": "They watch TV every evening."
+    },
+    {
+      "word": "Love",
+      "meaning": "ভালোবাসা",
+      "example": "I love my family."
+    },
+    {
+      "word": "Talk",
+      "meaning": "কথা বলা",
+      "example": "Don’t talk during class."
+    },
+    {
+      "word": "Play",
+      "meaning": "খেলা",
+      "example": "We play football in the park."
+    },
+    {
+      "word": "Travel",
+      "meaning": "ভ্রমণ করা",
+      "example": "They love to travel to new places."
+    },
+    {
+      "word": "Jump",
+      "meaning": "লাফানো",
+      "example": "The cat can jump over the wall."
+    },
+    {
+      "word": "Clap",
+      "meaning": "তালি দেওয়া",
+      "example": "Everyone clapped after the song."
+    },
+    {
+      "word": "Grow",
+      "meaning": "বড় হওয়া / বাড়া",
+      "example": "Plants grow with water and sunlight."
+    },
+    {
+    "word": "Answer",
+    "meaning": "উত্তর দেওয়া",
+    "example": "She knows the answer to the question."
+    },
+    {
+      "word": "Build",
+      "meaning": "নির্মাণ করা",
+      "example": "They will build a new house next year."
+    },
+    {
+      "word": "Carry",
+      "meaning": "বহন করা",
+      "example": "He can carry heavy bags easily."
+    },
+    {
+      "word": "Catch",
+      "meaning": "ধরা",
+      "example": "Try to catch the ball!"
+    },
+    {
+      "word": "Change",
+      "meaning": "পরিবর্তন করা",
+      "example": "She wants to change her dress."
+    },
+    {
+      "word": "Choose",
+      "meaning": "পছন্দ করা / বেছে নেওয়া",
+      "example": "You can choose any color you like."
+    },
+    {
+      "word": "Climb",
+      "meaning": "উঠা / আরোহন করা",
+      "example": "We will climb the hill tomorrow."
+    },
+    {
+      "word": "Count",
+      "meaning": "গোনা",
+      "example": "He can count from 1 to 100."
+    },
+    {
+      "word": "Discover",
+      "meaning": "আবিষ্কার করা",
+      "example": "Scientists discover new things every day."
+    },
+    {
+      "word": "Fall",
+      "meaning": "পড়ে যাওয়া",
+      "example": "Be careful not to fall."
+    },
+    {
+      "word": "Fix",
+      "meaning": "মেরামত করা",
+      "example": "Can you fix the broken chair?"
+    },
+    {
+      "word": "Follow",
+      "meaning": "অনুসরণ করা",
+      "example": "Follow the rules in class."
+    },
+    {
+      "word": "Forget",
+      "meaning": "ভুলে যাওয়া",
+      "example": "Don’t forget your umbrella."
+    },
+    {
+      "word": "Guess",
+      "meaning": "অনুমান করা",
+      "example": "Can you guess the answer?"
+    },
+    {
+      "word": "Hope",
+      "meaning": "আশা করা",
+      "example": "I hope you feel better soon."
+    },
+    {
+      "word": "Hurt",
+      "meaning": "আঘাত করা / ব্যথা পাওয়া",
+      "example": "He hurt his leg while playing."
+    },
+    {
+      "word": "Join",
+      "meaning": "যোগদান করা",
+      "example": "Will you join us for lunch?"
+    },
+    {
+      "word": "Keep",
+      "meaning": "রাখা",
+      "example": "Keep your room clean."
+    },
+    {
+      "word": "Learn",
+      "meaning": "শেখা",
+      "example": "I want to learn English."
+    },
+    {
+      "word": "Leave",
+      "meaning": "ছেড়ে যাওয়া / ত্যাগ করা",
+      "example": "He will leave at 5 PM."
+    },
+    {
+      "word": "Lose",
+      "meaning": "হারানো",
+      "example": "Don’t lose your keys."
+    },
+    {
+      "word": "Meet",
+      "meaning": "দেখা করা / সাক্ষাৎ করা",
+      "example": "I will meet my friend tomorrow."
+    },
+    {
+      "word": "Move",
+      "meaning": "সরে যাওয়া / সরানো",
+      "example": "Please move the chair."
+    },
+    {
+      "word": "Pass",
+      "meaning": "পাস করা / অতিক্রম করা",
+      "example": "She wants to pass the exam."
+    },
+    {
+      "word": "Plan",
+      "meaning": "পরিকল্পনা করা",
+      "example": "We plan to visit our grandparents."
+    },
+    {
+      "word": "Promise",
+      "meaning": "প্রতিশ্রুতি দেওয়া",
+      "example": "I promise to help you."
+    },
+    {
+      "word": "Raise",
+      "meaning": "উঠানো / লালনপালন করা",
+      "example": "They raise chickens on their farm."
+    },
+    {
+      "word": "Remember",
+      "meaning": "মনে রাখা",
+      "example": "Do you remember his name?"
+    },
+    {
+      "word": "Send",
+      "meaning": "পাঠানো",
+      "example": "I will send you the file."
+    },
+    {
+      "word": "Wait",
+      "meaning": "অপেক্ষা করা",
+      "example": "Please wait for your turn."
     }
-  ],
+    ],
   2: [
     {
       word: "Angry",
