@@ -8,11 +8,12 @@ const Quiz = () => {
   const [submitted, setSubmitted] = useState(false);
   const numberOfQuestions = 5;
   const { chapterNo } = useLocalSearchParams();
+  const chapterNoInt = Number(chapterNo);
  
   const data = useMemo(() => {
-    const initialData = quizData[chapterNo];
+    const initialData = quizData[chapterNoInt];
     return [...initialData].sort(() => Math.random() - 0.5).slice(0, numberOfQuestions);
-  }, [chapterNo]); // Only re-shuffle if chapterNo changes
+  }, [chapterNoInt]); // Only re-shuffle if chapterNo changes
 
   const handleOptionSelect = (questionId, option) => {
     setAnswers({ ...answers, [questionId]: option });
@@ -28,7 +29,13 @@ const Quiz = () => {
 
   const getResults = () => {
     let score = 0;
-    let details = [];
+
+    let details: {
+    question: string;
+    selected: string;
+    correct: string;
+    isCorrect: boolean;
+    }[] = [];
 
     data.forEach((item) => {
       const isCorrect = answers[item.id] === item.correctAnswer;
@@ -76,14 +83,16 @@ const Quiz = () => {
       ))}
 
       {!submitted ? (
-        <Button title="Submit Quiz" onPress={handleSubmit} />
-      ) : (
-        <View style={styles.resultBlock}>
-          <Text style={styles.resultText}>
-            You got {results.score} out of {data.length} correct!
-          </Text>
-        </View>
-      )}
+      <Button title="Submit Quiz" onPress={handleSubmit} />
+    ) : (
+      <View style={styles.resultBlock}>
+        <Text style={styles.resultText}>
+          {results
+            ? `You got ${results.score} out of ${data.length} correct!`
+            : null}
+        </Text>
+      </View>
+    )}
     </ScrollView>
   );
 };

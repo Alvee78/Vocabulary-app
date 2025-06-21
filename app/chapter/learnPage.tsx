@@ -6,8 +6,8 @@ import WordCard from '../../Components/WordCard';
 import CustomButton from '../../Components/CustomButton';
 
 export default function LearnPage() {
-    const {id} = useLocalSearchParams();
-    const chapterWords = words[id] || [];
+    const {id , part} = useLocalSearchParams();
+    const chapterWords = words[Number(id)] || [];
     const wordsPerPage = 5;
     const totalPages = Math.ceil(chapterWords.length / wordsPerPage);
     const [page, setPage] = useState(1);

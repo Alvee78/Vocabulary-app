@@ -1,7 +1,7 @@
 import React from 'react';
 import { TouchableOpacity, Text, StyleSheet } from 'react-native';
 
-export default function CustomButton({ title, onPress, variant = 'primary' }) {
+export default function CustomButton({ title, onPress, variant = 'primary' }:any) {
   return (
     <TouchableOpacity 
       style={[

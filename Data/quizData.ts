@@ -463,3 +463,29 @@ export const quizData = {
     ]
 
 };
+
+// export const quizData = {
+//     1: {
+//         1: [
+//             // Questions for Chapter 1, Part 1
+//         ],
+//         2: [
+//             // Questions for Chapter 1, Part 2
+//         ],
+//         3: [
+//             // Questions for Chapter 1, Part 3
+//         ],
+//     },
+//     2: {
+//         1: [
+//             // Questions for Chapter 2, Part 1
+//         ],
+//         2: [
+//             // Questions for Chapter 2, Part 2
+//         ],
+//         3: [
+//             // Questions for Chapter 2, Part 3
+//         ],
+//     },
+//     // ...and so on for other chapters
+// };
