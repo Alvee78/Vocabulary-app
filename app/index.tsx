@@ -48,9 +48,10 @@ const index = () => {
       <View style={styles.container}>
         <Image 
           style={styles.logo}
-          source={require('../assets/images/Money_save_img.jpg')}
+          resizeMode='contain'
+          source={require('../assets/images/flashScreen.png')}
         />
-        <Text style={styles.welcomeText}>Budget better, Live smarter</Text>
+        <Text style={styles.welcomeText}>Build Your Word Power</Text>
       </View>
     </ScreenWrapper>
   )

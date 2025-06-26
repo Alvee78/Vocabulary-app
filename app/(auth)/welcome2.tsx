@@ -4,7 +4,7 @@ import Typography from '../../Components/Typography'
 import { colors, spacingX, spacingY } from '../../Constants/Theme'
 import { verticalScale } from 'react-native-size-matters'
 import CustomButton from '../../Components/CustomButton'
-import Animated, { FadeInDown } from 'react-native-reanimated'
+import Animated, { FadeInDown, FadeInUp } from 'react-native-reanimated'
 import ScreenWrapper from '../../Components/ScreenWrapper'
 import { useRouter } from 'expo-router'
 import CustomButton2 from '../../Components/CustomButton2'
@@ -14,8 +14,9 @@ const ChooseAuth = () => {
   return (
     <ScreenWrapper>
       <View style={{ flex: 1, justifyContent: 'flex-end'}}>
-        <Image
-          source={require('../../assets/images/welcome.png')}
+        <Animated.Image
+          entering={FadeInUp.duration(1000)}
+          source={require('../../assets/images/welcomePage.png')}
           style={styles.welcomeImage}
           resizeMode='contain'
         />

@@ -761,6 +761,202 @@ const words = {
       example: "This search engine uses a complex algorithm."
     }
   ],
+  6:[
+    {
+      word: "Rice",
+      meaning: "চাল, প্রধান খাদ্যশস্য",
+      example: "Rice is a staple food in many countries."
+    },
+    {
+      word: "Bread",
+      meaning: "রুটি, পাউরুটি",
+      example: "She likes to eat bread with butter."
+    },
+    {
+      word: "Fruit",
+      meaning: "ফল, গাছের উৎপন্ন খাদ্য",
+      example: "An apple is a healthy fruit."
+    },
+    {
+      word: "Vegetable",
+      meaning: "শাকসবজি, উদ্ভিজ্জ খাদ্য",
+      example: "Carrots and spinach are nutritious vegetables."
+    },
+    {
+      word: "Meat",
+      meaning: "মাংস, প্রাণীর খাদ্য",
+      example: "He prefers chicken meat over beef."
+    },
+    {
+      word: "Fish",
+      meaning: "মাছ, জলজ প্রাণী",
+      example: "Grilled fish is a popular dish."
+    },
+    {
+      word: "Dairy",
+      meaning: "ডেইরি, দুধ ও দুধজাত পণ্য",
+      example: "Milk and cheese are dairy products."
+    },
+    {
+      word: "Snack",
+      meaning: "নাস্তা, ক্ষণস্থায়ী খাদ্য",
+      example: "I like to have a snack in the afternoon."
+    },
+    {
+      word: "Dessert",
+      meaning: "মিষ্টান্ন, খাবারের পরের মিষ্টি",
+      example: "Ice cream is a favorite dessert."
+    },
+    {
+      word: "Beverage",
+      meaning: "পানীয়, পান করার জন্য তরল",
+      example: "Water is the healthiest beverage."
+    },
+    {
+      word: "Coffee",
+      meaning: "কফি, গরম পানীয়",
+      example: "She drinks coffee every morning."
+    },
+    {
+      word: "Tea",
+      meaning: "চা, গরম পানীয়",
+      example: "He prefers tea over coffee."
+    },
+    {
+      word: "Juice",
+      meaning: "রস, ফলের তরল",
+      example: "Orange juice is refreshing."
+    },
+    {
+      word: "Soup",
+      meaning: "সুপ, তরল খাবার",
+      example: "Chicken soup is good for health."
+    },
+    {
+      word: "Salad",
+      meaning: "সালাদ, শাকসবজি ও ফলের মিশ্রণ",
+      example: "A fresh salad is a healthy choice."
+    },
+    {
+      word: "Spice",
+      meaning: "মসলা, স্বাদ বাড়ানোর উপাদান",
+      example: "Cumin is a common spice in cooking."
+    },
+    {
+      word: "Salt",
+      meaning: "লবণ, স্বাদ বাড়ানোর উপাদান",
+      example: "Add a pinch of salt to the dish."
+    },
+    {
+      word: "Sugar",
+      meaning: "চিনি, মিষ্টি করার উপাদান",
+      example: "She likes sugar in her tea."
+    },
+    {
+      word: "Oil",
+      meaning: "তেল, রান্নায় ব্যবহৃত তরল পদার্থ",
+      example: "Olive oil is healthy for cooking."
+    }
+  ],
+  7: [
+    {
+      word: "Exercise",
+      meaning: "ব্যায়াম, শরীরচর্চা",
+      example: "Regular exercise is important for health."
+    },
+    {
+      word: "Healthy",
+      meaning: "স্বাস্থ্যকর, সুস্থ",
+      example: "Eating fruits and vegetables keeps you healthy."
+    },
+    {
+      word: "Fitness",
+      meaning: "ফিটনেস, শারীরিক সক্ষমতা",
+      example: "She goes to the gym for fitness."
+    },
+    {
+      word: "Yoga",
+      meaning: "যোগ, শারীরিক ও মানসিক ব্যায়াম",
+      example: "Yoga helps in relaxation and flexibility."
+    },
+    {
+      word: "Diet",
+      meaning: "ডায়েট, খাদ্যাভ্যাস",
+      example: "A balanced diet is essential for good health."
+    },
+    {
+      word: "Nutrition",
+      meaning: "পুষ্টি, খাদ্য থেকে প্রাপ্ত উপাদান",
+      example: "Proper nutrition is vital for growth."
+    },
+    {
+      word: "Sleep",
+      meaning: "ঘুম, বিশ্রাম সময়",
+      example: "Getting enough sleep is crucial for health."
+    },
+    {
+      word: "Stress",
+      meaning: "মানসিক চাপ, উদ্বেগ",
+      example: "Meditation can help reduce stress."
+    },
+    {
+      word: "Relaxation",
+      meaning: "বিশ্রাম, আরাম করা",
+      example: "Listening to music is a form of relaxation."
+    },
+    {
+      word: "Wellness",
+      meaning: "সুস্থতা, সামগ্রিক স্বাস্থ্য অবস্থা",
+      example: "Wellness programs promote healthy living."
+    },
+    {
+      word: "Exercise Routine",
+      meaning: "ব্যায়ামের রুটিন, নিয়মিত ব্যায়ামের পরিকল্পনা",
+      example: "She follows a strict exercise routine."
+    },
+    {
+      word: "Cardio",
+      meaning: "কার্ডিও, হৃদরোগের ব্যায়াম",
+      example: "Running is a great cardio exercise."
+    },
+    {
+      word: "Strength Training",
+      meaning: "শক্তি প্রশিক্ষণ, পেশী শক্তিশালী করার ব্যায়াম",
+      example: "He does strength training three times a week."
+    },
+    {
+      word: "Hydration",
+      meaning: "হাইড্রেশন, শরীরের পানির পরিমাণ বজায় রাখা",
+      example: "Proper hydration is essential during exercise."
+    },
+    
+  ],
+
 };
 
 export default words;
+// {
+//     id: 6,
+//     title: "Chapter 6: Food & Drink",
+//     description: "Vocabulary related to food and beverages.",
+//   },
+//   {
+//     id: 7,
+//     title: "Chapter 7: Health & Fitness",
+//     description: "Words about health, exercise, and wellness.",
+//   },
+//   {
+//     id: 8,
+//     title: "Chapter 8: Nature & Environment",
+//     description: "Terms related to nature and environmental issues.",
+//   },
+//   {
+//     id: 9,
+//     title: "Chapter 9: Arts & Culture",
+//     description: "Words about art, music, and cultural topics.",
+//   },
+//   {
+//     id: 10,
+//     title: "Chapter 10: Science & Education",
+//     description: "Vocabulary for scientific concepts and education.",
+//   },

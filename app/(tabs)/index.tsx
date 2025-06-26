@@ -38,7 +38,7 @@ export default function Home() {
             unlocked={true}
             percentage={65}
             onPress={() => router.push({ 
-              pathname: '/chapter/chapterPart', 
+              pathname: '/chapter/learnPage', 
               params: { id: item.id } 
             })}
           />

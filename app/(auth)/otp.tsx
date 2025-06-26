@@ -42,125 +42,33 @@ const Register2 = () => {
   // clerk sign up
   const onVerifyPress = async () => {
     if (!isLoaded) return
-
+    setIsLoading(true);
     try {
       const signUpAttempt = await signUp.attemptEmailAddressVerification({
         code,
       })
       if (signUpAttempt.status === 'complete') {
         await setActive({ session: signUpAttempt.createdSessionId })
+        await AsyncStorage.setItem('userEmail', email);
         router.replace('/')
       } else {
-        console.error(JSON.stringify(signUpAttempt, null, 2))
+        Alert.alert('Error', 'Invalid OTP. Please try again.');
+        console.log(JSON.stringify(signUpAttempt, null, 2))
       }
     } catch (err) {
-      console.error(JSON.stringify(err, null, 2))
+      Alert.alert('Error!', 'Failed to verify OTP. Please check your code and try again.');
+      console.log(JSON.stringify(err, null, 2))
     } finally {
       setIsLoading(false);
     }
   }
-  // const handleGenerateOtp = async (username: string, email: string, password: string) => {
-  //   try {
-  //     const response = await fetch(`http://${HOST_URL}/otpGenerator.php`, {
-  //       method: 'POST',
-  //       headers: {
-  //         'Content-Type': 'application/x-www-form-urlencoded',
-  //       },
-  //       body: `username=${encodeURIComponent(username)}&email=${encodeURIComponent(email)}&password=${encodeURIComponent(password)}`,
-  //     });
-
-  //     const data = await response.json();
-  //     // console.log("username:", username);
-  //     // console.log("email:", email);
-  //     // console.log("password:", password);
-
-  //     if (data.exists) {
-  //       Alert.alert('Error', 'User already exists. Please try a different email.');
-  //       router.back();
-  //       return;
-  //     } else {
-  //       console.log('OTP generated successfully:', data.message);
-  //     }
-
-  //   } catch (err) {
-  //     Alert.alert('Error', 'Failed to connect to server. Please try again later.!');
-  //     console.log('Error generating OTP:!', err);
-  //   } finally{
-  //     setIsLoading(false);
-  //   }
-
-  //   // Automatically send OTP after generating it
-  //   try{
-  //       await fetch(`http://${HOST_URL}/otpSender.php`)
-  //       .then(response => response.json())
-  //       .then(data => {
-  //         if (data.success) {
-  //           console.log('OTP sent successfully:', data.message);
-  //         } else {
-  //           console.log('Error sending OTP:', data.message);
-  //           Alert.alert('Error', 'Please provide a valid email address.');
-  //           router.back();
-  //         }
-  //       });
-  //     } catch (error) {
-  //       console.log('Error sending OTP:', error);
-  //       Alert.alert('Error',"Catch: "+ error);
-  //     }
-  // };
 
   const handleValidateOTP = async () => {
     if (!code || code.length !== 6) {
       Alert.alert('Invalid OTP', 'Please enter the 6-digit OTP sent to your email.');
       return;
     }
-    setIsLoading(true);
-
     onVerifyPress();
-    // try {
-    //   const response = await fetch(`http://${HOST_URL}/otpValidator.php`, {
-    //     method: 'POST',
-    //     headers: {
-    //       'Content-Type': 'application/x-www-form-urlencoded',
-    //     },
-    //     body: `username=${encodeURIComponent(username)}&email=${encodeURIComponent(email)}&password=${encodeURIComponent(password)}&otp=${encodeURIComponent(otpRef.current)}`,
-    //   });
-
-    //   if (!response.ok) {
-    //     setIsLoading(false);
-    //     Alert.alert('Error', 'Failed to validate OTP. Please try again later.');
-    //     return;
-    //   }
-
-    //   const isValid = await response.json();
-
-    //   setIsLoading(false);
-
-    //   if (isValid) {
-    //     //Alert.alert('Success', 'OTP validated successfully!');
-    //     storeUserDetails(username, email);
-    //     //<ConfirmLogin/>;
-    //     goHome();
-    //   } else {
-    //     Alert.alert('Invalid OTP', 'The OTP you entered is incorrect. Please try again.');
-    //   }
-    // } catch (err) {
-    //   setIsLoading(false);
-    //   Alert.alert('Error', 'Failed to connect to server.! Please try again later.');
-    // }
-  };
-
-  // Function to store logged-in user details in AsyncStorage and navigate to home screen
-  const storeUserDetails = async (username: string, email: string) => {
-    await AsyncStorage.setItem('username', username);
-    await AsyncStorage.setItem('email', email);
-    await AsyncStorage.setItem('isLoggedIn', 'true');
-  };
-
-  const goHome = () => {
-    // Reset the navigation stack and navigate to home screen
-    
-    router.push("(tabs)");
-    Alert.alert('Success', 'Registration completed successfully! You can now log in.');
   };
 
   return (

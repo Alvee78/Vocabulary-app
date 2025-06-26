@@ -2,7 +2,6 @@
 import  { useEffect, useRef, useState } from 'react'
 import ScreenWrapper from '../../Components/ScreenWrapper'
 import { colors, spacing } from '../../Constants/Theme'
-import welcome from './welcome'
 import { verticalScale } from 'react-native-size-matters'
 import Typography from '../../Components/Typography'
 import BackButton from '../../Components/backButton'
@@ -11,16 +10,13 @@ import { User, EnvelopeSimple, Password } from 'phosphor-react-native'
 import CustomButton from '../../Components/CustomButton'
 import CustomButton2 from '../../Components/CustomButton2'
 import * as React from 'react'
-import { Text, TextInput, TouchableOpacity, View, StyleSheet } from 'react-native'
+import { Text, TextInput, TouchableOpacity, View, StyleSheet, Alert } from 'react-native'
 import { useSignUp } from '@clerk/clerk-expo'
 import { Link, useRouter } from 'expo-router'
 
 const Register = () => {
-  const nameRef = useRef("");
-  const emailRef = useRef("");
-  const passwordRef = useRef("");
-  const confirmPasswordRef = useRef("");
   const [isLoading, setIsLoading] = useState(false);
+  const [foundError, setFoundError] = useState(false);
   const router = useRouter();
   const handleRegister = () => {
     if(!emailAddress || !password || !confirmPassword || !name) {
@@ -33,15 +29,6 @@ const Register = () => {
     }
     //console.log("Registering with", emailRef.current, passwordRef.current, nameRef.current, confirmPasswordRef.current);
     onSignUpPress();
-    // Test otp
-    router.push({
-      pathname: '/(auth)/otp',
-      params: {
-        username: name,
-        email: emailAddress,
-        password: password,
-      },
-    });
   }
 
   // clerk sign up
@@ -53,48 +40,35 @@ const Register = () => {
   const [password, setPassword] = React.useState('')
   const [confirmPassword, setConfirmPassword] = React.useState('')
   const [pendingVerification, setPendingVerification] = React.useState(false)
-  const [code, setCode] = React.useState('')
 
   // Handle submission of sign-up form
   const onSignUpPress = async () => {
     if (!isLoaded) return
-
+    setIsLoading(true);
+    setFoundError(false);
     try {
       await signUp.create({
         emailAddress,
         password,
       })
       await signUp.prepareEmailAddressVerification({ strategy: 'email_code' })
+      router.push({
+        pathname: '/otp',
+        params: {
+          username: name,
+          email: emailAddress,
+          password: password,
+        },
+      });
     } catch (err) {
-      console.error(JSON.stringify(err, null, 2))
+      console.log(JSON.stringify(err, null, 2))
+      Alert.alert('Error!', 'Failed to create account.' + err.message);
+      setFoundError(true);
+    } finally {
+      setIsLoading(false);
     }
   }
 
-  // Handle submission of verification form
-  const onVerifyPress = async () => {
-    if (!isLoaded) return
-
-    try {
-      const signUpAttempt = await signUp.attemptEmailAddressVerification({
-        code,
-      })
-      if (signUpAttempt.status === 'complete') {
-        await setActive({ session: signUpAttempt.createdSessionId })
-        router.replace('/')
-      } else {
-        console.error(JSON.stringify(signUpAttempt, null, 2))
-      }
-    } catch (err) {
-      console.error(JSON.stringify(err, null, 2))
-    }
-  }
-
-  if (pendingVerification) {
-    useEffect(() => {
-    router.push("/otp");
-    }, [router]);
-    return null;
-  }
   return (
     <ScreenWrapper>
       <View style={styles.container}>

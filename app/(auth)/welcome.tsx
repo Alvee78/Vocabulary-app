@@ -5,7 +5,7 @@ import Typography from '../../Components/Typography'
 import { colors, spacingX, spacingY } from '../../Constants/Theme'
 import { verticalScale } from 'react-native-size-matters'
 import CustomButton from '../../Components/CustomButton'
-import Animated, { FadeInDown } from 'react-native-reanimated'
+import Animated, { FadeInDown, FadeInUp } from 'react-native-reanimated'
 import { useRouter } from 'expo-router'
 import CustomButton2 from '../../Components/CustomButton2'
 
@@ -15,8 +15,9 @@ const welcome = () => {
     <ScreenWrapper>
       <View>
         
-        <Image
-          source={require('../../assets/images/welcome.png')}
+        <Animated.Image
+          entering={FadeInUp.duration(1000)}
+          source={require('../../assets/images/welcomePage.png')}
           style={styles.welcomeImage}
           resizeMode='contain'
         />
@@ -27,11 +28,11 @@ const welcome = () => {
            style={{ alignItems: 'center' }}>
             <Typography
               size={24}
-              fontWeight={'800'}>Welcome to Expense</Typography>
+              fontWeight={'800'}>Welcome to Vocabulary</Typography>
 
             <Typography
               size={24}
-              fontWeight={'800'}>Tracker</Typography>
+              fontWeight={'800'}>App</Typography>
             </Animated.View>
 
             <Animated.View 
@@ -42,7 +43,7 @@ const welcome = () => {
               color={colors.textSecondary}
               style={{ alignSelf: 'center'}}
             >
-              Track your expenses and manage
+              Learn new words, take quizzes,
             </Typography>
             
             <Typography
@@ -50,7 +51,7 @@ const welcome = () => {
               color={colors.textSecondary}
               style={{ alignSelf: 'center'}}
             >
-              your budget effectively.
+              and boost your vocabulary
             </Typography>
 
           </Animated.View>
