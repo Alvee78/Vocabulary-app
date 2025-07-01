@@ -1,3 +1,4 @@
+import { LinearGradient } from 'expo-linear-gradient'
 import { colors } from '../Constants/Theme'
 import { ScreenWrapperProps } from '../types'
 import React from 'react'
@@ -7,7 +8,7 @@ import { SafeAreaView } from 'react-native-safe-area-context'
 const ScreenWrapper = ({ style, children }: ScreenWrapperProps) => {
   return (
     <SafeAreaView style={[styles.container, style]}>
-      <StatusBar barStyle="light-content" />
+      <StatusBar barStyle="dark-content" />
       {children}
     </SafeAreaView>
   )
@@ -19,6 +20,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingTop: 16,
-    backgroundColor: colors.neutral90,
+    backgroundColor: '#FFF4E0',
   },
 })

@@ -76,381 +76,6 @@ const words = {
       word: "Cook",
       meaning: "রান্না করা",
       example: "He likes to cook Italian food."
-    },
-    {
-    "word": "Sleep",
-    "meaning": "ঘুমানো",
-    "example": "I usually sleep at 10 PM."
-    },
-    {
-      "word": "Walk",
-      "meaning": "হাঁটা",
-      "example": "They walk to school every day."
-    },
-    {
-      "word": "Dog",
-      "meaning": "কুকুর",
-      "example": "The dog barked loudly."
-    },
-    {
-      "word": "Cat",
-      "meaning": "বিড়াল",
-      "example": "Her cat loves to sleep on the couch."
-    },
-    {
-      "word": "Sun",
-      "meaning": "সূর্য",
-      "example": "The sun rises in the east."
-    },
-    {
-      "word": "Moon",
-      "meaning": "চাঁদ",
-      "example": "The moon is bright tonight."
-    },
-    {
-      "word": "Star",
-      "meaning": "তারা",
-      "example": "I saw a shooting star last night."
-    },
-    {
-      "word": "Pen",
-      "meaning": "কলম",
-      "example": "He wrote the note with a blue pen."
-    },
-    {
-      "word": "School",
-      "meaning": "স্কুল",
-      "example": "My brother goes to school by bus."
-    },
-    {
-      "word": "Teacher",
-      "meaning": "শিক্ষক",
-      "example": "Our teacher gave us homework."
-    },
-    {
-      "word": "Apple",
-      "meaning": "আপেল",
-      "example": "She ate a red apple."
-    },
-    {
-      "word": "Ball",
-      "meaning": "বল",
-      "example": "The child kicked the ball."
-    },
-    {
-      "word": "Bird",
-      "meaning": "পাখি",
-      "example": "A bird is sitting on the tree."
-    },
-    {
-      "word": "Car",
-      "meaning": "গাড়ি",
-      "example": "He drives a blue car."
-    },
-    {
-      "word": "House",
-      "meaning": "বাড়ি",
-      "example": "They live in a big house."
-    },
-    {
-      "word": "Clean",
-      "meaning": "পরিষ্কার করা",
-      "example": "She helps her mother clean the room."
-    },
-    {
-      "word": "Jump",
-      "meaning": "লাফানো",
-      "example": "The boy can jump very high."
-    },
-    {
-      "word": "Sing",
-      "meaning": "গান গাওয়া",
-      "example": "He likes to sing in the shower."
-    },
-    {
-      "word": "Dance",
-      "meaning": "নাচা",
-      "example": "They dance at the party."
-    },
-    {
-      "word": "Help",
-      "meaning": "সাহায্য করা",
-      "example": "Can you help me with my homework?"
-    },
-    {
-      "word": "Wash",
-      "meaning": "ধোয়া",
-      "example": "Wash your hands before eating."
-    },
-    {
-      "word": "Listen",
-      "meaning": "শোনা",
-      "example": "Listen to the teacher carefully."
-    },
-    {
-      "word": "Write",
-      "meaning": "লেখা",
-      "example": "She loves to write stories."
-    },
-    {
-      "word": "Read",
-      "meaning": "পড়া",
-      "example": "He can read very fast."
-    },
-    {
-      "word": "Draw",
-      "meaning": "আঁকা",
-      "example": "I like to draw pictures of animals."
-    },
-    {
-      "word": "Close",
-      "meaning": "বন্ধ করা",
-      "example": "Please close the door."
-    },
-    {
-      "word": "Open",
-      "meaning": "খোলা",
-      "example": "Open your book to page five."
-    },
-    {
-      "word": "Push",
-      "meaning": "ধাক্কা দেওয়া",
-      "example": "Push the door to enter."
-    },
-    {
-      "word": "Pull",
-      "meaning": "টানা",
-      "example": "Pull the drawer to get the spoon."
-    },
-    {
-      "word": "Call",
-      "meaning": "ফোন করা / ডাক দেওয়া",
-      "example": "Call me when you get home."
-    },
-    {
-      "word": "Stand",
-      "meaning": "দাঁড়ানো",
-      "example": "Please stand in a line."
-    },
-    {
-      "word": "Sit",
-      "meaning": "বসা",
-      "example": "Sit down and relax."
-    },
-    {
-      "word": "Ride",
-      "meaning": "চড়া",
-      "example": "He can ride a bicycle."
-    },
-    {
-      "word": "Buy",
-      "meaning": "কেনা",
-      "example": "She wants to buy a new dress."
-    },
-    {
-      "word": "Sell",
-      "meaning": "বিক্রি করা",
-      "example": "They sell fruits at the market."
-    },
-    {
-      "word": "Wear",
-      "meaning": "পরিধান করা",
-      "example": "I wear a jacket when it’s cold."
-    },
-    {
-      "word": "Look",
-      "meaning": "দেখা",
-      "example": "Look at the board."
-    },
-    {
-      "word": "Watch",
-      "meaning": "দেখা (মনোযোগ দিয়ে)",
-      "example": "They watch TV every evening."
-    },
-    {
-      "word": "Love",
-      "meaning": "ভালোবাসা",
-      "example": "I love my family."
-    },
-    {
-      "word": "Talk",
-      "meaning": "কথা বলা",
-      "example": "Don’t talk during class."
-    },
-    {
-      "word": "Play",
-      "meaning": "খেলা",
-      "example": "We play football in the park."
-    },
-    {
-      "word": "Travel",
-      "meaning": "ভ্রমণ করা",
-      "example": "They love to travel to new places."
-    },
-    {
-      "word": "Jump",
-      "meaning": "লাফানো",
-      "example": "The cat can jump over the wall."
-    },
-    {
-      "word": "Clap",
-      "meaning": "তালি দেওয়া",
-      "example": "Everyone clapped after the song."
-    },
-    {
-      "word": "Grow",
-      "meaning": "বড় হওয়া / বাড়া",
-      "example": "Plants grow with water and sunlight."
-    },
-    {
-    "word": "Answer",
-    "meaning": "উত্তর দেওয়া",
-    "example": "She knows the answer to the question."
-    },
-    {
-      "word": "Build",
-      "meaning": "নির্মাণ করা",
-      "example": "They will build a new house next year."
-    },
-    {
-      "word": "Carry",
-      "meaning": "বহন করা",
-      "example": "He can carry heavy bags easily."
-    },
-    {
-      "word": "Catch",
-      "meaning": "ধরা",
-      "example": "Try to catch the ball!"
-    },
-    {
-      "word": "Change",
-      "meaning": "পরিবর্তন করা",
-      "example": "She wants to change her dress."
-    },
-    {
-      "word": "Choose",
-      "meaning": "পছন্দ করা / বেছে নেওয়া",
-      "example": "You can choose any color you like."
-    },
-    {
-      "word": "Climb",
-      "meaning": "উঠা / আরোহন করা",
-      "example": "We will climb the hill tomorrow."
-    },
-    {
-      "word": "Count",
-      "meaning": "গোনা",
-      "example": "He can count from 1 to 100."
-    },
-    {
-      "word": "Discover",
-      "meaning": "আবিষ্কার করা",
-      "example": "Scientists discover new things every day."
-    },
-    {
-      "word": "Fall",
-      "meaning": "পড়ে যাওয়া",
-      "example": "Be careful not to fall."
-    },
-    {
-      "word": "Fix",
-      "meaning": "মেরামত করা",
-      "example": "Can you fix the broken chair?"
-    },
-    {
-      "word": "Follow",
-      "meaning": "অনুসরণ করা",
-      "example": "Follow the rules in class."
-    },
-    {
-      "word": "Forget",
-      "meaning": "ভুলে যাওয়া",
-      "example": "Don’t forget your umbrella."
-    },
-    {
-      "word": "Guess",
-      "meaning": "অনুমান করা",
-      "example": "Can you guess the answer?"
-    },
-    {
-      "word": "Hope",
-      "meaning": "আশা করা",
-      "example": "I hope you feel better soon."
-    },
-    {
-      "word": "Hurt",
-      "meaning": "আঘাত করা / ব্যথা পাওয়া",
-      "example": "He hurt his leg while playing."
-    },
-    {
-      "word": "Join",
-      "meaning": "যোগদান করা",
-      "example": "Will you join us for lunch?"
-    },
-    {
-      "word": "Keep",
-      "meaning": "রাখা",
-      "example": "Keep your room clean."
-    },
-    {
-      "word": "Learn",
-      "meaning": "শেখা",
-      "example": "I want to learn English."
-    },
-    {
-      "word": "Leave",
-      "meaning": "ছেড়ে যাওয়া / ত্যাগ করা",
-      "example": "He will leave at 5 PM."
-    },
-    {
-      "word": "Lose",
-      "meaning": "হারানো",
-      "example": "Don’t lose your keys."
-    },
-    {
-      "word": "Meet",
-      "meaning": "দেখা করা / সাক্ষাৎ করা",
-      "example": "I will meet my friend tomorrow."
-    },
-    {
-      "word": "Move",
-      "meaning": "সরে যাওয়া / সরানো",
-      "example": "Please move the chair."
-    },
-    {
-      "word": "Pass",
-      "meaning": "পাস করা / অতিক্রম করা",
-      "example": "She wants to pass the exam."
-    },
-    {
-      "word": "Plan",
-      "meaning": "পরিকল্পনা করা",
-      "example": "We plan to visit our grandparents."
-    },
-    {
-      "word": "Promise",
-      "meaning": "প্রতিশ্রুতি দেওয়া",
-      "example": "I promise to help you."
-    },
-    {
-      "word": "Raise",
-      "meaning": "উঠানো / লালনপালন করা",
-      "example": "They raise chickens on their farm."
-    },
-    {
-      "word": "Remember",
-      "meaning": "মনে রাখা",
-      "example": "Do you remember his name?"
-    },
-    {
-      "word": "Send",
-      "meaning": "পাঠানো",
-      "example": "I will send you the file."
-    },
-    {
-      "word": "Wait",
-      "meaning": "অপেক্ষা করা",
-      "example": "Please wait for your turn."
     }
     ],
   2: [
@@ -856,6 +481,11 @@ const words = {
       word: "Oil",
       meaning: "তেল, রান্নায় ব্যবহৃত তরল পদার্থ",
       example: "Olive oil is healthy for cooking."
+    },
+    {
+      word: "Flour",
+      meaning: "আটা, ময়দা",
+      example: "Flour is used to make bread and pastries."
     }
   ],
   7: [
@@ -929,9 +559,343 @@ const words = {
       meaning: "হাইড্রেশন, শরীরের পানির পরিমাণ বজায় রাখা",
       example: "Proper hydration is essential during exercise."
     },
-    
+    {
+      word: "Mental Health",
+      meaning: "মানসিক স্বাস্থ্য, মানসিক সুস্থতা",
+      example: "Mental health is as important as physical health."
+    },
+    {
+      word: "Immunity",
+      meaning: "প্রতিরোধ ক্ষমতা, রোগ প্রতিরোধের ক্ষমতা",
+      example: "A healthy diet boosts immunity."
+    },
+    {
+      word: "Chronic Disease",
+      meaning: "দীর্ঘস্থায়ী রোগ, দীর্ঘ সময় ধরে চলা রোগ",
+      example: "Diabetes is a common chronic disease."
+    },
+    {
+      word: "First Aid",
+      meaning: "প্রাথমিক চিকিৎসা, জরুরি চিকিৎসা",
+      example: "Knowing first aid can save lives."
+    },
+    {
+      word: "Physical Activity",
+      meaning: "শারীরিক কার্যকলাপ, শরীরচর্চা",
+      example: "Physical activity is important for maintaining health."
+    },
+    {
+      word: "Health Checkup",
+      meaning: "স্বাস্থ্য পরীক্ষা, নিয়মিত স্বাস্থ্য পরীক্ষা",
+      example: "A health checkup helps in early detection of diseases."
+    }
   ],
-
+  8: [
+    {
+      word: "Nature",
+      meaning: "প্রকৃতি, পরিবেশ",
+      example: "Nature is full of wonders."
+    },
+    {
+      word: "Environment",
+      meaning: "পরিবেশ, চারপাশের অবস্থা",
+      example: "We must protect the environment."
+    },
+    {
+      word: "Ecosystem",
+      meaning: "ইকোসিস্টেম, বাস্তুতন্ত্র",
+      example: "The rainforest is a complex ecosystem."
+    },
+    {
+      word: "Biodiversity",
+      meaning: "জীববৈচিত্র্য, বিভিন্ন প্রজাতির সমাহার",
+      example: "Biodiversity is essential for a healthy planet."
+    },
+    {
+      word: "Conservation",
+      meaning: "সংরক্ষণ, প্রাকৃতিক সম্পদ রক্ষা",
+      example: "Wildlife conservation is important."
+    },
+    {
+      word: "Pollution",
+      meaning: "দূষণ, পরিবেশের অবনতি",
+      example: "Air pollution is a major issue."
+    },
+    {
+      word: "Sustainability",
+      meaning: "টেকসই উন্নয়ন, পরিবেশের ভারসাম্য রক্ষা",
+      example: "Sustainability is key to our future."
+    },
+    {
+      word: "Climate Change",
+      meaning: "আবহাওয়া পরিবর্তন, জলবায়ুর পরিবর্তন",
+      example: "Climate change affects us all."
+    },
+    {
+      word: "Renewable Energy",
+      meaning: "নবায়নযোগ্য শক্তি, পুনর্নবীকরণযোগ্য শক্তির উৎস",
+      example: "Solar power is a form of renewable energy."
+    },
+    {
+      word: "Deforestation",
+      meaning: "বন উজাড়, গাছ কাটা",
+      example: "Deforestation leads to habitat loss."
+    },
+    {
+      word: "Wildlife",
+      meaning: "বন্যপ্রাণী, প্রকৃতির প্রাণী",
+      example: "Wildlife conservation is crucial for biodiversity."
+    },
+    {
+      word: "Habitat",
+      meaning: "বাসস্থান, প্রাণীর আবাসস্থল",
+      example: "The forest is a natural habitat for many species."
+    },
+    {
+      word: "Endangered Species",
+      meaning: "বিপন্ন প্রজাতি, বিলুপ্তির পথে থাকা প্রাণী",
+      example: "The Bengal tiger is an endangered species."
+    },
+    {
+      word: "Recycling",
+      meaning: "পুনর্ব্যবহার, পুনঃচক্রায়ন",
+      example: "Recycling helps reduce waste."
+    },
+    {
+      word: "Organic Farming",
+      meaning: "জৈব চাষ, রাসায়নিক মুক্ত কৃষি",
+      example: "Organic farming promotes healthy food production."
+    },
+    {
+      word: "Natural Resources",
+      meaning: "প্রাকৃতিক সম্পদ, প্রাকৃতিক উপাদানসমূহ",
+      example: "Water is a vital natural resource."
+    },
+    {
+      word: "Climate Action",
+      meaning: "জলবায়ু কর্ম, জলবায়ু পরিবর্তনের বিরুদ্ধে পদক্ষেপ",
+      example: "We need to take climate action now."
+    },
+    {
+      word: "Sustainable Development",
+      meaning: "টেকসই উন্নয়ন, পরিবেশের ভারসাম্য বজায় রেখে উন্নয়ন",
+      example: "Sustainable development is essential for future generations."
+    },
+    {
+      word: "Green Energy",
+      meaning: "সবুজ শক্তি, পরিবেশবান্ধব শক্তির উৎস",
+      example: "Wind turbines generate green energy."
+    },
+    {
+      word: "Carbon Footprint",
+      meaning: "কার্বন পদচিহ্ন, মানব কার্যকলাপের কারণে কার্বন নির্গমন",
+      example: "Reducing your carbon footprint helps combat climate change."
+    }
+  ],
+  9: [
+    {
+      word: "Art",
+      meaning: "শিল্প, সৃজনশীল কাজ",
+      example: "Art expresses human emotions and ideas."
+    },
+    {
+      word: "Music",
+      meaning: "সঙ্গীত, সংগীতের সুর ও লয়",
+      example: "Music can uplift your mood."
+    },
+    {
+      word: "Dance",
+      meaning: "নৃত্য, শরীরের আন্দোলন",
+      example: "She loves to dance to classical music."
+    },
+    {
+      word: "Theater",
+      meaning: "থিয়েটার, নাটক মঞ্চস্থ করার স্থান",
+      example: "We watched a play at the local theater."
+    },
+    {
+      word: "Literature",
+      meaning: "সাহিত্য, লেখালেখির শিল্প",
+      example: "Literature reflects society and culture."
+    },
+    {
+      word: "Painting",
+      meaning: "চিত্রকলা, রং দিয়ে আঁকা শিল্পকর্ম",
+      example: "The painting was displayed in the gallery."
+    },
+    {
+      word: "Sculpture",
+      meaning: "মূর্তি, ত্রিমাত্রিক শিল্পকর্ম",
+      example: "The sculpture was made of marble."
+    },
+    {
+      word: "Photography",
+      meaning: "ফটোগ্রাফি, ছবি তোলা শিল্প",
+      example: "Photography captures moments in time."
+    },
+    {
+      word: "Culture",
+      meaning: "সংস্কৃতি, সমাজের রীতি-নীতি ও বিশ্বাসসমূহ",
+      example: "Cultural diversity enriches our lives."
+    },
+    {
+      word: "Tradition",
+      meaning: "পরম্পরা, পূর্বপুরুষদের রীতি-নীতি",
+      example: "Traditions are passed down through generations."
+    },
+    {
+      word: "Festival",
+      meaning: "উৎসব, বিশেষ উপলক্ষে উদযাপন",
+      example: "Diwali is a major festival in India."
+    },
+    {
+      word: "Heritage",
+      meaning: "ঐতিহ্য, পূর্বপুরুষদের সাংস্কৃতিক সম্পদ",
+      example: "Heritage sites are preserved for future generations."
+    },
+    {
+      word: "Crafts",
+      meaning: "হস্তশিল্প, হাতে তৈরি শিল্পকর্ম",
+      example: "Local crafts are sold at the market."
+    },
+    {
+      word: "Cinema",
+      meaning: "সিনেমা, চলচ্চিত্র শিল্প",
+      example: "The cinema shows both local and international films."
+    },
+    {
+      word: "Poetry",
+      meaning: "কবিতা, ছন্দবদ্ধ লেখালেখি",
+      example: "She enjoys reading poetry in her free time."
+    },
+    {
+      word: "Architecture",
+      meaning: "স্থাপত্য, ভবন নির্মাণের শিল্প",
+      example: "The architecture of the ancient temple is stunning."
+    },
+    {
+      word: "Design",
+      meaning: "ডিজাইন, পরিকল্পনা বা নকশা",
+      example: "Graphic design is a popular field of study."
+    },
+    {
+      word: "Fashion",
+      meaning: "ফ্যাশন, পোশাক ও স্টাইলের শিল্প",
+      example: "Fashion trends change every season."
+    },
+    {
+      word: "Performance",
+      meaning: "প্রদর্শনী, শিল্পকর্মের মঞ্চস্থকরণ",
+      example: "The performance was captivating and well-received."
+    },
+    {
+      word: "Exhibition",
+      meaning: "প্রদর্শনী, শিল্পকর্মের প্রদর্শন",
+      example: "The art exhibition attracted many visitors."
+    }
+  ],
+  10: [
+    {
+      word: "Science",
+      meaning: "বিজ্ঞান, জ্ঞান ও গবেষণার শাখা",
+      example: "Science helps us understand the world."
+    },
+    {
+      word: "Technology",
+      meaning: "প্রযুক্তি, যন্ত্র ও পদ্ধতির ব্যবহার",
+      example: "Technology has transformed communication."
+    },
+    {
+      word: "Research",
+      meaning: "গবেষণা, তথ্য সংগ্রহ ও বিশ্লেষণ",
+      example: "Research is essential for scientific progress."
+    },
+    {
+      word: "Experiment",
+      meaning: "পরীক্ষা, বৈজ্ঞানিক পরীক্ষা-নিরীক্ষা",
+      example: "The experiment yielded interesting results."
+    },
+    {
+      word: "Data",
+      meaning: "তথ্য, পরিসংখ্যান বা তথ্যসমূহ",
+      example: "Data analysis is crucial in research."
+    },
+    {
+      word: "Hypothesis",
+      meaning: "ধারণা, পরীক্ষামূলক অনুমান",
+      example: "The hypothesis was tested through experiments."
+    },
+    {
+      word: "Theory",
+      meaning: "তত্ত্ব, বৈজ্ঞানিক ব্যাখ্যা",
+      example: "Einstein's theory of relativity changed physics."
+    },
+    {
+      word: "Biology",
+      meaning: "জীববিজ্ঞান, জীবনের বিজ্ঞান",
+      example: "Biology studies living organisms and their processes."
+    },
+    {
+      word: "Chemistry",
+      meaning: "রসায়ন, পদার্থের গঠন ও পরিবর্তন অধ্যয়ন",
+      example: "Chemistry explores the properties of substances."
+    },
+    {
+      word: "Physics",
+      meaning: "পদার্থবিজ্ঞান, শক্তি ও পদার্থের অধ্যয়ন",
+      example: "Physics explains the laws of nature."
+    },
+    {
+      word: "Mathematics",
+      meaning: "গণিত, সংখ্যা ও পরিমাপের বিজ্ঞান",
+      example: "Mathematics is the language of science."
+    },
+    {
+      word: "Astronomy",
+      meaning: "জ্যোতির্বিজ্ঞান, মহাবিশ্বের অধ্যয়ন",
+      example: "Astronomy studies celestial bodies and phenomena."
+    },
+    {
+      word: "Geology",
+      meaning: "ভূতত্ত্ব, পৃথিবীর গঠন ও ইতিহাসের অধ্যয়ন",
+      example: "Geology examines the Earth's structure and processes."
+    },
+    {
+      word: "Ecology",
+      meaning: "পরিবেশবিজ্ঞান, জীববৈচিত্র্য ও পরিবেশের সম্পর্ক",
+      example: "Ecology studies the interactions between organisms and their environment."
+    },
+    {
+      word: "Medicine",
+      meaning: "চিকিৎসা, রোগ নিরাময় ও স্বাস্থ্য রক্ষা",
+      example: "Medicine is essential for treating illnesses."
+    },
+    {
+      word: "Education",
+      meaning: "শিক্ষা, জ্ঞান অর্জন ও বিতরণ",
+      example: "Education is the key to personal and societal development."
+    },
+    {
+      word: "Innovation",
+      meaning: "উদ্ভাবন, নতুন ধারণা বা প্রযুক্তির সৃষ্টি",
+      example: "Innovation drives progress in various fields."
+    },
+    {
+      word: "Artificial Intelligence",
+      meaning: "কৃত্রিম বুদ্ধিমত্তা, যন্ত্রের বুদ্ধিমত্তা",
+      example: "Artificial intelligence is revolutionizing technology."
+    },
+    {
+      word: "Robotics",
+      meaning: "রোবোটিক্স, যন্ত্রের নকশা ও নির্মাণ",
+      example: "Robotics combines engineering and computer science."
+    },
+    {
+      word: "Genetics",
+      meaning: "জিনতত্ত্ব, জীবের বংশগত বৈশিষ্ট্য অধ্যয়ন",
+      example: "Genetics explores heredity and variation in organisms."
+    }
+  ]
 };
 
 export default words;

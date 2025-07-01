@@ -59,7 +59,7 @@ export default function LearnPage() {
         ) : (
           <CustomButton 
             title="Start Quiz" 
-            onPress={() => router.push({
+            onPress={() => router.replace({
               pathname: '/quiz/quiz',
               params: { chapterNo: id }
             })} 

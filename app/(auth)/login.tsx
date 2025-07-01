@@ -1,4 +1,4 @@
-import  { useRef, useState } from 'react'
+import  { useEffect, useRef, useState } from 'react'
 import ScreenWrapper from '../../Components/ScreenWrapper'
 import { colors, spacing } from '../../Constants/Theme'
 import welcome from './welcome'
@@ -16,11 +16,16 @@ import { Link, useRouter } from 'expo-router'
 import { useSignIn } from '@clerk/clerk-expo'
 import { Alert, TouchableOpacity, View, StyleSheet } from 'react-native'
 import React from 'react'
+import { useUser } from '@clerk/clerk-expo';
+import { loadUserAppData } from '../../config/CloudData/loadUserAppData'
 
 const login = () => {
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
+  const { user} = useUser();
+  const userId = user?.id;
   const { signIn, setActive, isLoaded } = useSignIn();
+  const [pendingLogin, setPendingLogin] = useState(false);
 
 
   const [emailAddress, setEmailAddress] = React.useState('');
@@ -45,10 +50,10 @@ const login = () => {
       })
 
       if (signInAttempt.status === 'complete') {
-        await setActive({ session: signInAttempt.createdSessionId })
+        await setActive({ session: signInAttempt.createdSessionId });
         // Store user email in AsyncStorage
-        await AsyncStorage.setItem('userEmail', emailAddress);
-        router.replace('/')
+        await AsyncStorage.setItem('dataStoreStatus', "New login");
+        router.replace('/');
       } else {
         Alert.alert('Error', 'Invalid email or password. Please try again.');
         console.log(JSON.stringify(signInAttempt, null, 2))
@@ -60,7 +65,8 @@ const login = () => {
       setIsLoading(false);
     }
   }
-  
+  // This effect runs when user is updated
+
 
   return (
     <ScreenWrapper>

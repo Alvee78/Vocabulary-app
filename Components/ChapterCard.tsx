@@ -1,69 +1,10 @@
-// import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
-// import React from 'react'
-// import { MaterialIcons } from '@expo/vector-icons'
-// export default function ChapterCard({ title,descriptions, unlocked, onPress }) {
-//   return (
-//     <TouchableOpacity 
-//       style={[styles.card, !unlocked && styles.locked]} 
-//       onPress={onPress}
-//       disabled={!unlocked}
-//     >
-//       <Text style={styles.title}>{title}</Text>
-//       <Text style={styles.descriptions}>{descriptions}</Text>
-//       <View style={styles.statusContainer}>
-//         <Text style={styles.status}>
-//           {unlocked ? 'Unlocked' : 'Locked'}
-//         </Text>
-//         <MaterialIcons 
-//           name={unlocked ? 'lock-open' : 'lock'} 
-//           size={16}  
-//           style={styles.status}
-//         />
-//       </View>
-//     </TouchableOpacity>
-//   )
-// }
- 
-// const styles = StyleSheet.create({
-//   card: {
-//     width: '97%',
-//     backgroundColor: '#58e48b',
-//     padding: 16,
-//     margin: 8,
-//     borderRadius: 8,
-//     elevation: 2,
-//     alignItems: 'center'
-//   },
-//   locked: {
-//     backgroundColor: '#f15355',
-//     opacity: 0.7
-//   },
-//   title: {
-//     fontSize: 20,
-//     fontWeight: 'bold',
-//     marginBottom: 8
-//   },
-//   descriptions: {
-//     fontSize: 14,
-//     color: '#666',
-//     marginBottom: 8
-//   },
-//     statusContainer: {
-//     flexDirection: 'row',
-//     alignItems: 'center',
-//     justifyContent: 'center'
-//   },
-//   status: {
-//     color: '#f4f4f4',
-//     fontSize: 18
-//   }
-// })
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, Image } from 'react-native';
 import React from 'react';
 import { MaterialIcons } from '@expo/vector-icons';
 import { ChapterCardProps } from '../types';
+import { verticalScale } from 'react-native-size-matters';
 
-export default function ChapterCard({ title, descriptions, unlocked, onPress, percentage = 0 }: ChapterCardProps) {
+export default function ChapterCard({ title, descriptions, unlocked, onPress, percentage = 0, image }: ChapterCardProps) {
   const getProgressColor = (percentage) => {
     if (percentage <= 30) return '#e74c3c'; // Red
     if (percentage <= 70) return '#f1c40f'; // Yellow
@@ -75,35 +16,42 @@ export default function ChapterCard({ title, descriptions, unlocked, onPress, pe
       style={[styles.card, !unlocked && styles.locked]}
       onPress={onPress}
       disabled={!unlocked}
+      activeOpacity={0.85}
     >
-      <Text style={styles.title}>{title}</Text>
-      <Text style={styles.descriptions}>{descriptions}</Text>
-
-      {/* Progress Bar */}
-      <View style={styles.progressBarContainer}>
-        <View style={styles.progressBackground}>
-          <View
-            style={[
-              styles.progressFill,
-              {
-                width: `${percentage}%`,
-                backgroundColor: getProgressColor(percentage),
-              },
-            ]}
-          />
-        </View>
-        <Text style={styles.percentageLabel}>{percentage}%</Text>
-      </View>
-
-      <View style={styles.statusContainer}>
-        <Text style={styles.status}>
-          {unlocked ? 'Unlocked' : 'Locked'}
-        </Text>
-        <MaterialIcons
-          name={unlocked ? 'lock-open' : 'lock'}
-          size={16}
-          style={styles.status}
+      {image && (
+        <Image
+          resizeMode="cover"
+          source={typeof image === 'string' ? { uri: image } : image}
+          style={styles.image}
         />
+      )}
+      <View style={styles.content}>
+        <Text style={styles.title} numberOfLines={2}>{title}</Text>
+        {/* <Text style={styles.descriptions} numberOfLines={2}>{descriptions}</Text> */}
+        <View style={styles.statusContainer}>
+          <MaterialIcons
+            name={unlocked ? 'lock-open' : 'lock'}
+            size={18}
+            style={styles.statusIcon}
+          />
+          <Text style={styles.statusText}>
+            {unlocked ? 'Unlocked' : 'Locked'}
+          </Text>
+        </View>
+        <View style={styles.progressBarContainer}>
+          <View style={styles.progressBackground}>
+            <View
+              style={[
+                styles.progressFill,
+                {
+                  width: `${percentage}%`,
+                  backgroundColor: getProgressColor(percentage),
+                },
+              ]}
+            />
+          </View>
+          <Text style={styles.percentageLabel}>{percentage}%</Text>
+        </View>
       </View>
     </TouchableOpacity>
   );
@@ -111,44 +59,67 @@ export default function ChapterCard({ title, descriptions, unlocked, onPress, pe
 
 const styles = StyleSheet.create({
   card: {
-    width: '95%',
-    backgroundColor: '#58e48b',
-    paddingVertical: 20,
-    paddingHorizontal: 16,
+    width: '48%',
+    backgroundColor: '#fff',
     marginVertical: 10,
-    borderRadius: 12,
-    elevation: 3,
-    alignItems: 'flex-start',
+    borderRadius: 16,
+    elevation: 5,
     shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.15,
-    shadowRadius: 4,
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.12,
+    shadowRadius: 8,
+    overflow: 'hidden',
+    marginBottom: 16,
   },
   locked: {
-    backgroundColor: '#f15355',
-    opacity: 0.6,
+    backgroundColor: '#f8d7da',
+    opacity: 0.7,
+  },
+  image: {
+    width: '100%',
+    height: verticalScale(130),
+    borderTopLeftRadius: 16,
+    borderTopRightRadius: 16,
+  },
+  content: {
+    padding: 14,
+    flex: 1,
+    justifyContent: 'space-between',
   },
   title: {
-    fontSize: 22,
-    fontWeight: '700',
-    color: '#fff',
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: '#222',
     marginBottom: 4,
   },
   descriptions: {
+    fontSize: 14,
+    color: '#666',
+    marginBottom: 10,
+  },
+  statusContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 8,
+  },
+  statusIcon: {
+    color: '#2ecc71',
+    marginRight: 6,
+  },
+  statusText: {
+    color: '#2ecc71',
     fontSize: 15,
-    color: '#f0f0f0',
-    marginBottom: 12,
-    textAlign: 'left',
+    fontWeight: '600',
   },
   progressBarContainer: {
     width: '100%',
-    marginBottom: 12,
+    marginTop: 6,
     alignItems: 'flex-start',
   },
   progressBackground: {
     width: '100%',
-    height: 10,
-    backgroundColor: '#dcdcdc',
+    height: 8,
+    backgroundColor: '#e0e0e0',
     borderRadius: 6,
     overflow: 'hidden',
   },
@@ -158,19 +129,9 @@ const styles = StyleSheet.create({
   },
   percentageLabel: {
     marginTop: 4,
-    fontSize: 13,
+    fontSize: 12,
     fontWeight: '500',
-    color: '#333',
-  },
-  statusContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginTop: 6,
-  },
-  status: {
-    color: '#fff',
-    fontSize: 16,
-    marginLeft: 4,
+    color: '#888',
+    alignSelf: 'flex-end',
   },
 });
-

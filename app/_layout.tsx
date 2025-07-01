@@ -11,6 +11,7 @@ export default function RootLayout() {
         <Stack.Screen name="index" options={{ headerShown: false }} />
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
         <Stack.Screen name='(auth)' options={{ headerShown: false }} />
+        <Stack.Screen name="(home)" options={{ headerShown: false}} />
         <Stack.Screen name='chapter/learnPage' options={{ title: 'Chapter Page' }} />
         <Stack.Screen
           name='quiz/quiz'

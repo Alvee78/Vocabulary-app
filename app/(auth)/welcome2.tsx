@@ -8,11 +8,16 @@ import Animated, { FadeInDown, FadeInUp } from 'react-native-reanimated'
 import ScreenWrapper from '../../Components/ScreenWrapper'
 import { useRouter } from 'expo-router'
 import CustomButton2 from '../../Components/CustomButton2'
+import { LinearGradient } from 'expo-linear-gradient'
 
 const ChooseAuth = () => {
     const router = useRouter();
   return (
     <ScreenWrapper>
+      <LinearGradient
+        colors={['#FFF4E0', '#FFE5B4']}
+        style={StyleSheet.absoluteFill}
+      />
       <View style={{ flex: 1, justifyContent: 'flex-end'}}>
         <Animated.Image
           entering={FadeInUp.duration(1000)}
@@ -28,14 +33,14 @@ const ChooseAuth = () => {
             <Typography
               size={24}
               fontWeight={'800'}
-              color={colors.text}
+              color={accentColor}
               style={{ marginBottom: spacingY.sm }}
             >
               Welcome!
             </Typography>
             <Typography
               size={16}
-              color={colors.textSecondary}
+              color={secondaryText}
               style={{ alignSelf: 'center', marginTop: spacingY.xs }}
             >
               Please choose an option to continue
@@ -46,13 +51,13 @@ const ChooseAuth = () => {
                 <Animated.View
                     entering={FadeInDown.duration(800).delay(500)}>
                     <CustomButton2
-                    style={{ marginBottom: spacingY.sm }}
+                    style = {styles.authButton }
                     onPress={() => router.push('/(auth)/login')}
                     >
                     <Typography
-                        size={16}
-                        fontWeight={'600'}
-                        color={colors.neutral90}
+                      size={16}
+                      fontWeight={'600'}
+                      color="#fff"
                     >
                         Log In
                     </Typography>
@@ -62,11 +67,12 @@ const ChooseAuth = () => {
                     entering={FadeInDown.duration(800).delay(700)}>
                     <CustomButton2
                     onPress={() => router.push('/(auth)/register')}
+                    style = {styles.authButton }
                     >
                     <Typography
-                        size={16}
-                        fontWeight={'600'}
-                        color={colors.primary100}
+                      size={16}
+                      fontWeight={'600'}
+                      color="#fff"
                     >
                         Sign Up
                     </Typography>
@@ -91,18 +97,40 @@ const styles = StyleSheet.create({
     marginTop: verticalScale(50),
   },
   footer: {
-    backgroundColor: colors.neutral80,
+    backgroundColor: 'rgba(255, 244, 224, 0.96)',
     alignItems: 'center',
-    paddingTop: verticalScale(30),
-    paddingBottom: verticalScale(30),
+    paddingTop: verticalScale(20),
+    paddingBottom: verticalScale(20),
     gap: spacingY.sm,
-    borderRadius: 30,
+    borderRadius: 36,
     marginHorizontal: spacingX.sm,
     marginBottom: spacingY.lg,
+    borderWidth: 1.5,
+    borderColor: '#FFD59E',
+    shadowColor: '#FF9900',
+    shadowOffset: { width: 0, height: 10 },
+    shadowOpacity: 0.13,
+    shadowRadius: 24,
+    elevation: 10,
   },
   buttonContainer: {
     width: '100%',
     paddingHorizontal: spacingX.md,
     marginTop: spacingY.md,
   },
-})
+  authButton: {
+  backgroundColor: '#FF9900', // Vibrant orange
+  borderRadius: 28,
+  paddingVertical: 14,
+  paddingHorizontal: 36,
+  marginVertical: spacingY.xs,
+  alignItems: 'center',
+  shadowColor: '#FF9900',
+  shadowOffset: { width: 0, height: 4 },
+  shadowOpacity: 0.18,
+  shadowRadius: 8,
+  elevation: 4,
+  },
+});
+const accentColor = '#FF9900';
+const secondaryText = '#B8860B';

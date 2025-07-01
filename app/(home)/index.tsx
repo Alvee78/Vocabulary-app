@@ -1,20 +1,23 @@
 import SignOutButton from '../../Components/SignOutButton'
 import { SignedIn, SignedOut, useUser } from '@clerk/clerk-expo'
 import { Link, Redirect } from 'expo-router'
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import { ActivityIndicator, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import ScreenWrapper from '../../Components/ScreenWrapper'
+import { scale } from 'react-native-size-matters'
 
 export default function Page() {
   const { user } = useUser()
 
   return (
-    <View style={styles.container}>
-      <SignedIn>
-        <Redirect href={'../(tabs)'} />
-      </SignedIn>
-      <SignedOut>
-        <Redirect href={'../(auth)/welcome'} />
-      </SignedOut>
-    </View>
+    <ScreenWrapper style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+        <ActivityIndicator size={scale(70)}/>
+        <SignedIn>
+          <Redirect href={'../(tabs)'} />
+        </SignedIn>
+        <SignedOut>
+          <Redirect href={'../(auth)/welcome'} />
+        </SignedOut>
+    </ScreenWrapper>
   )
 }
 

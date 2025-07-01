@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import { GestureResponderEvent, TextInput, TextInputProps, TextProps, TouchableOpacityProps, ViewStyle } from 'react-native';
+import { GestureResponderEvent, ImageSourcePropType, TextInput, TextInputProps, TextProps, TouchableOpacityProps, ViewStyle } from 'react-native';
 import { TextStyle } from 'react-native-size-matters';
 export type ScreenWrapperProps = {
   children: ReactNode;
@@ -51,5 +51,6 @@ export type ChapterCardProps = {
   unlocked: boolean;
   percentage?: number;
   onPress?: (event: GestureResponderEvent) => void;
+  image?: string | ImageSourcePropType;
 };
 
