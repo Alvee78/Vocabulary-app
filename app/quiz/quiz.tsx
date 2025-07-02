@@ -6,6 +6,7 @@ import CustomButton from '../../Components/CustomButton';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { updateinsertUserAppData } from '../../config/CloudData/updateInsert';
 import { useUser } from '@clerk/clerk-expo';
+import { LinearGradient } from 'expo-linear-gradient';
 
 const Quiz = () => {
   const { user } = useUser();
@@ -80,6 +81,10 @@ const Quiz = () => {
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
+      <LinearGradient
+        colors={['#FFF4E0', '#FFE5B4']}
+        style={StyleSheet.absoluteFill}
+      />
       {data.map((q) => (
         <View key={q.id} style={styles.questionBlock}>
           <Text style={styles.questionText}>{q.question}</Text>

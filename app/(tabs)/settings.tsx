@@ -1,6 +1,6 @@
-import { StyleSheet, Text, View, ScrollView } from 'react-native'
+import { StyleSheet, Text, View, ScrollView, Button } from 'react-native'
 import React from 'react'
-import CustomButton from '../../Components/CustomButton'
+import CustomButton from '../../Components/CustomButton2'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import Typography from '../../Components/Typography'
 import { useRouter } from 'expo-router'
@@ -67,9 +67,16 @@ export default function Settings() {
             App Data
           </Typography>
           <View style={styles.divider} />
-          <CustomButton title="Add Data" onPress={addData} style={styles.actionButton} />
-          <CustomButton title="Update Data" onPress={updateData} style={styles.actionButton} />
-          <CustomButton title="Show App Data" onPress={showappdata} style={styles.actionButton} />
+          
+          <View style={styles.actionButton}>
+            <Button title="Add Data" onPress={addData} />
+          </View>
+          <View style={styles.actionButton}>
+            <Button title="Update Data" onPress={updateData} />
+          </View>
+          <View style={styles.actionButton}>
+            <Button title="Show App Data" onPress={showappdata} />
+          </View>
 
           <Typography size={18} fontWeight="700" color="#FF9900" style={styles.sectionTitle }>
             Account
@@ -149,7 +156,17 @@ const styles = StyleSheet.create({
     borderRadius: 2,
   },
   actionButton: {
-    marginBottom: 12,
+  marginBottom: 16,
+  backgroundColor: '#FF9900',
+  borderRadius: 24,
+  paddingVertical: 12,
+  alignItems: 'center',
+  // Add shadow if your CustomButton supports style prop
+  shadowColor: '#FFB84C',
+  shadowOffset: { width: 0, height: 4 },
+  shadowOpacity: 0.15,
+  shadowRadius: 8,
+  elevation: 3,
   },
   versionText: {
     color: '#B8860B',

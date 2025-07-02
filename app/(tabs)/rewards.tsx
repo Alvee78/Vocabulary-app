@@ -3,6 +3,7 @@ import React from 'react'
 import { Ionicons } from '@expo/vector-icons'
 import { scale } from 'react-native-size-matters'
 import { LinearGradient } from 'expo-linear-gradient'
+import ScreenWrapper from '../../Components/ScreenWraper2'
 
 const achievements = [
   { id: '1', title: 'First Quiz Completed', points: 50, unlocked: true },
@@ -23,50 +24,49 @@ export default function Rewards() {
   // Example: Replace with real user points
   const userPoints = 320
 
-  return (
-    <View style={styles.container}>
-      <LinearGradient
-        colors={['#FFF4E0', '#FFE5B4']}
-        style={StyleSheet.absoluteFill}
-      />
 
-      <View style={styles.header}>      
-        <Ionicons name="trophy" size={60} color="#FFD700" />
-        <Text style={styles.pointsText}>{userPoints} Points</Text>
-        <Text style={styles.subtitle}>Your Achievements</Text>
-      </View>
-      <FlatList
-      data={achievements}
-      keyExtractor={item => item.id}
-      contentContainerStyle={styles.list}
-      renderItem={({ item }) => (
-        <View style={[
-          styles.achievementCard,
-          item.unlocked && styles.achievementCardUnlocked
-        ]}>
-          {item.unlocked ? (
-            <Ionicons name="star" size={28} color="#FF9900" style={{ marginRight: 12 }} />
-          ) : (
-            <Ionicons name="lock-closed" size={28} color="#FFD59E" style={{ marginRight: 12 }} />
-          )}
-          <View>
-            <Text style={[
-              styles.achievementTitle,
-              item.unlocked && styles.achievementTitleUnlocked
-            ]}>
-              {item.title}
-            </Text>
-            <Text style={[
-              styles.achievementPoints,
-              item.unlocked && styles.achievementPointsUnlocked
-            ]}>
-              +{item.points} pts
-            </Text>
-          </View>
+
+  return (
+    <ScreenWrapper>
+      <View style={styles.container}>
+        <View style={styles.header}>      
+          <Ionicons name="trophy" size={60} color="#FFD700" />
+          <Text style={styles.pointsText}>{userPoints} Points</Text>
+          <Text style={styles.subtitle}>Your Achievements</Text>
         </View>
-      )}
-    />
-    </View>
+        <FlatList
+        data={achievements}
+        keyExtractor={item => item.id}
+        contentContainerStyle={styles.list}
+        renderItem={({ item }) => (
+          <View style={[
+            styles.achievementCard,
+            item.unlocked && styles.achievementCardUnlocked
+          ]}>
+            {item.unlocked ? (
+              <Ionicons name="star" size={28} color="#FF9900" style={{ marginRight: 12 }} />
+            ) : (
+              <Ionicons name="lock-closed" size={28} color="#FFD59E" style={{ marginRight: 12 }} />
+            )}
+            <View>
+              <Text style={[
+                styles.achievementTitle,
+                item.unlocked && styles.achievementTitleUnlocked
+              ]}>
+                {item.title}
+              </Text>
+              <Text style={[
+                styles.achievementPoints,
+                item.unlocked && styles.achievementPointsUnlocked
+              ]}>
+                +{item.points} pts
+              </Text>
+            </View>
+          </View>
+        )}
+      />
+      </View>
+    </ScreenWrapper>
   )
 }
 

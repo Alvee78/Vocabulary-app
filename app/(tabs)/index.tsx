@@ -9,6 +9,7 @@ import { loadUserAppData } from '../../config/CloudData/loadUserAppData'
 import { useUser } from '@clerk/clerk-expo'
 import { userAppData } from '../../Data/appData'
 import { scale } from 'react-native-size-matters'
+import ScreenWrapper from '../../Components/ScreenWraper2'
 
 export default function Home() {
   const router = useRouter();
@@ -101,6 +102,7 @@ export default function Home() {
     );
   }
   return (
+    <ScreenWrapper>
     <View style={styles.container}>
       {/* User Profile Header */}
       <View style={styles.profileHeader}>
@@ -130,7 +132,7 @@ export default function Home() {
             title={item.title}
             descriptions={item.description}
             unlocked={data[index+1].unlocked}
-            percentage={65}
+            percentage={Math.floor((data[index+1].totalMarks/data[index+1].maxMarks)*100)}
             image={chapterImage(item.id)}
             onPress={() => router.push({ 
               pathname: '/chapter/learnPage', 
@@ -145,6 +147,7 @@ export default function Home() {
         columnWrapperStyle={{ justifyContent: 'space-between', gap: 12 }}
       />
     </View>
+    </ScreenWrapper>
   )
 }
 
@@ -152,7 +155,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     width: '100%',
-    backgroundColor: '#FFF4E0', // light orange
+    backgroundColor: 'transparent', // light orange
   },
   profileHeader: {
     flexDirection: 'row',
