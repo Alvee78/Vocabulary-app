@@ -13,7 +13,7 @@ export const updateinsertUserAppData = async (userId, newData) => {
       ]
     );
 
-    const stringifiedValue = JSON.stringify(newData);
+
 
     if (res.documents.length > 0) {
       // Step 2: Document found → update it
@@ -24,7 +24,7 @@ export const updateinsertUserAppData = async (userId, newData) => {
       '685f973000094f61b81f',
         existingDocId,
         {
-          value: stringifiedValue
+          value: newData
         }
       );
       console.log('Document updated:', updated);
@@ -37,7 +37,7 @@ export const updateinsertUserAppData = async (userId, newData) => {
         {
           key: 'appData',
           userId: userId,
-          value: stringifiedValue
+          value: newData
         }
       );
       console.log('Document created:', created);

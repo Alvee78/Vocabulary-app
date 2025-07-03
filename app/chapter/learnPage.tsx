@@ -5,6 +5,7 @@ import words from '../../Data/words';
 import WordCard from '../../Components/WordCard';
 import CustomButton from '../../Components/CustomButton';
 import { LinearGradient } from 'expo-linear-gradient';
+import ScreenWrapper from '../../Components/ScreenWraper2';
 
 export default function LearnPage() {
     const { id } = useLocalSearchParams();
@@ -18,11 +19,8 @@ export default function LearnPage() {
     const currentWords = chapterWords.slice(startIndex, startIndex + wordsPerPage);
     
   return (
+    <ScreenWrapper>
     <View style={{ flex: 1 }}>
-      <LinearGradient
-        colors={['#FFF4E0', '#FFE5B4']}
-        style={StyleSheet.absoluteFill}
-      />
       <FlatList
         data={currentWords}
         renderItem={({ item }) => (
@@ -72,6 +70,7 @@ export default function LearnPage() {
         )}
       </View>
     </View>
+    </ScreenWrapper>
   )
 }
 
