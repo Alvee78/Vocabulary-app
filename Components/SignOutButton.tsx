@@ -1,4 +1,5 @@
 import { useClerk } from '@clerk/clerk-expo'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 import * as Linking from 'expo-linking'
 import { StyleSheet, Text, TouchableOpacity } from 'react-native'
 
@@ -7,6 +8,7 @@ import { StyleSheet, Text, TouchableOpacity } from 'react-native'
   const handleSignOut = async () => {
     try {
       await signOut()
+      await AsyncStorage.removeItem('appData') // Clear app data on sign out
       Linking.openURL(Linking.createURL('../(home)'))
     } catch (err) {
       console.error(JSON.stringify(err, null, 2))

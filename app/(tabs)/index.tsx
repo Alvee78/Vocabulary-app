@@ -49,23 +49,27 @@ export default function Home() {
     }, [])
   );
   const loadData = async () => {
-    console.log('Loading data for user ID:', userId);
     try {
       const status = await AsyncStorage.getItem('dataStoreStatus');
       if (status === 'New login') {
+        console.log('Loading data for user ID:', userId);
         // If it's a new login, load user app data
+        console.log('New login detected, loading user app data...');
         if (!userId) {
           console.warn('User ID is not available');
           return;
         }
         const storedData = await loadUserAppData(userId);
+        console.warn('User app stored data loaded:', storedData);
+        await setData(storedData);
+        console.warn('User app data loaded:', data);
         await AsyncStorage.setItem('appData', JSON.stringify(storedData));
-        setData(storedData);
         await AsyncStorage.setItem('dataStoreStatus', 'Data loaded');
       }else if (status == "New user") {
-        // If it's a new user, set default data
-        
-        setData(await AsyncStorage.getItem('appData'));
+        // If it's a new user, set default data , data added to AsyncStorage and cloud in otp page.
+        const storedData = await AsyncStorage.getItem('appData');
+        const parsedData = storedData ? JSON.parse(storedData) : dummyData;
+        setData(parsedData);
         await AsyncStorage.setItem('dataStoreStatus', 'Data loaded');
       } else {
         // If data is already loaded, just retrieve it
@@ -75,6 +79,7 @@ export default function Home() {
         } else {
           console.warn('No app data found in storage');
         }
+        console.log('Data already loaded, using stored data');
       }
     }
     catch (error) {
@@ -89,10 +94,10 @@ export default function Home() {
 
 
   useEffect(() => {
-    if (isLoaded) {
+    if (isLoaded && userId) {
       loadData();
     }
-  }, [isLoaded]);
+  }, [isLoaded, userId]);
 
   if (loading || !data || !data.userName) {
     return (
