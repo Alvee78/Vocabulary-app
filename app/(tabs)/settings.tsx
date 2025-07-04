@@ -30,7 +30,7 @@ export default function SettingsScreen() {
   return (
     <ScreenWrapper>
       <SafeAreaView style={settingsScreenStyles.container}>
-        <StatusBar barStyle="dark-content" backgroundColor="#FFDAB9" /> {/* Light orange status bar */}
+        {/* <StatusBar barStyle="dark-content" backgroundColor="#FFDAB9" /> Light orange status bar */}
         <Text style={settingsScreenStyles.header}>Settings</Text>
 
         <ScrollView style={settingsScreenStyles.settingsList}>
