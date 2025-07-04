@@ -73,3 +73,65 @@ export const isChapterUnlocked = (
 export const resetAllProgress = async (): Promise<void> => {
   await AsyncStorage.removeItem(STORAGE_KEY);
 };
+
+
+// import React, { useEffect, useState } from 'react';
+// import { Text, View, ScrollView } from 'react-native';
+// import * as FileSystem from 'expo-file-system';
+// import { Asset } from 'expo-asset';
+// import { openDatabaseSync } from 'expo-sqlite';
+
+// export default function App() {
+//   const [tables, setTables] = useState<string[]>([]);
+
+//   useEffect(() => {
+//     const loadDB = async () => {
+//       const dbFileName = 'test.db';
+//       const targetPath = FileSystem.documentDirectory + 'SQLite/' + dbFileName;
+
+//       // Ensure target folder exists
+//       await FileSystem.makeDirectoryAsync(FileSystem.documentDirectory + 'SQLite', {
+//         intermediates: true,
+//       });
+
+//       // Copy DB from assets if not already in filesystem
+//       const fileInfo = await FileSystem.getInfoAsync(targetPath);
+//       if (!fileInfo.exists) {
+//         const asset = Asset.fromModule(require('./assets/test.db'));
+//         await asset.downloadAsync(); // make sure it's loaded
+//         await FileSystem.copyAsync({
+//           from: asset.localUri!,
+//           to: targetPath,
+//         });
+//       }
+
+//       // Open the database using the new API
+//       const db = openDatabaseSync(dbFileName);
+
+//       // Query all table names
+//       const result = db.getAllSync(
+//         `SELECT name FROM sqlite_master WHERE type='table' AND name NOT LIKE 'sqlite_%';`
+//       );
+
+//       const tableNames = result.map((row) => row.name);
+//       setTables(tableNames);
+//     };
+
+//     loadDB();
+//   }, []);
+
+//   return (
+//     <ScrollView contentContainerStyle={{ padding: 20 }}>
+//       <Text style={{ fontSize: 20, fontWeight: 'bold', marginBottom: 10 }}>Tables in test.db:</Text>
+//       {tables.length === 0 ? (
+//         <Text>Loading or no tables found.</Text>
+//       ) : (
+//         tables.map((table, index) => (
+//           <Text key={index} style={{ fontSize: 16, marginVertical: 4 }}>
+//             • {table}
+//           </Text>
+//         ))
+//       )}
+//     </ScrollView>
+//   );
+// }

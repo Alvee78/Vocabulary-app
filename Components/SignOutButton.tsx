@@ -15,28 +15,30 @@ import { StyleSheet, Text, TouchableOpacity } from 'react-native'
     }
   }
   return (
-    <TouchableOpacity style={styles.button} onPress={handleSignOut}>
-      <Text style={styles.buttonText}>Sign out</Text>
+    <TouchableOpacity style={styles.logoutButton} onPress={handleSignOut}>
+      <Text style={styles.logoutButtonText}>Sign out</Text>
     </TouchableOpacity>
   )
 }
 export default SignOutButton
 const styles = StyleSheet.create({
-  button: {
-    backgroundColor: '#fff',
-    borderWidth: 1,
-    borderColor: '#2e64e5',
-    paddingVertical: 12,
-    paddingHorizontal: 32,
-    borderRadius: 8,
-    alignItems: 'center',
-    marginBottom: 18,
-    width: 180,
-    alignSelf: 'center',
-  },
-  buttonText: {
-    color: '#2e64e5',
-    fontWeight: '600',
-    fontSize: 16,
-  },
+  logoutButton: {
+  backgroundColor: '#FF4500', // Orange Red
+  borderRadius: 10,
+  paddingVertical: 15,
+  paddingHorizontal: 15,
+  marginTop: 30,
+  marginBottom: 50, // More space at the bottom
+  alignItems: 'center',
+  shadowColor: '#FF4500',
+  shadowOffset: { width: 0, height: 4 },
+  shadowOpacity: 0.2,
+  shadowRadius: 5,
+  elevation: 5,
+},
+logoutButtonText: {
+  fontSize: 18,
+  color: '#FFFFFF',
+  fontWeight: 'bold',
+},
 })
