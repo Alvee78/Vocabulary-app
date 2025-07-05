@@ -53,4 +53,8 @@ export type ChapterCardProps = {
   onPress?: (event: GestureResponderEvent) => void;
   image?: string | ImageSourcePropType;
 };
-
+export type Theme = 'light' | 'dark';
+export interface ThemeContextProps {
+  theme: Theme;
+  toggleTheme: () => void;
+}

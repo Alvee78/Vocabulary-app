@@ -2,8 +2,8 @@ import { StyleSheet, Text, View, FlatList } from 'react-native'
 import React from 'react'
 import { Ionicons } from '@expo/vector-icons'
 import { scale } from 'react-native-size-matters'
-import { LinearGradient } from 'expo-linear-gradient'
 import ScreenWrapper from '../../Components/ScreenWraper2'
+import { useTheme } from '../../context/ThemeContext'
 
 const achievements = [
   { id: '1', title: 'First Quiz Completed', points: 50, unlocked: true },
@@ -21,117 +21,119 @@ const achievements = [
 ]
 
 export default function Rewards() {
-  // Example: Replace with real user points
   const userPoints = 320
-
-
+  const { theme } = useTheme()
+  const styles = getThemedStyles(theme)
 
   return (
     <ScreenWrapper>
       <View style={styles.container}>
-        <View style={styles.header}>      
-          <Ionicons name="trophy" size={60} color="#FFD700" />
+        <View style={styles.header}>
+          <Ionicons name="trophy" size={60} color={theme === 'dark' ? "#7ecbff" : "#FFD700"} />
           <Text style={styles.pointsText}>{userPoints} Points</Text>
           <Text style={styles.subtitle}>Your Achievements</Text>
         </View>
         <FlatList
-        data={achievements}
-        keyExtractor={item => item.id}
-        contentContainerStyle={styles.list}
-        renderItem={({ item }) => (
-          <View style={[
-            styles.achievementCard,
-            item.unlocked && styles.achievementCardUnlocked
-          ]}>
-            {item.unlocked ? (
-              <Ionicons name="star" size={28} color="#FF9900" style={{ marginRight: 12 }} />
-            ) : (
-              <Ionicons name="lock-closed" size={28} color="#FFD59E" style={{ marginRight: 12 }} />
-            )}
-            <View>
-              <Text style={[
-                styles.achievementTitle,
-                item.unlocked && styles.achievementTitleUnlocked
-              ]}>
-                {item.title}
-              </Text>
-              <Text style={[
-                styles.achievementPoints,
-                item.unlocked && styles.achievementPointsUnlocked
-              ]}>
-                +{item.points} pts
-              </Text>
+          data={achievements}
+          keyExtractor={item => item.id}
+          contentContainerStyle={styles.list}
+          renderItem={({ item }) => (
+            <View style={[
+              styles.achievementCard,
+              item.unlocked && styles.achievementCardUnlocked
+            ]}>
+              {item.unlocked ? (
+                <Ionicons name="star" size={28} color={theme === 'dark' ? "#7ecbff" : "#FF9900"} style={{ marginRight: 12 }} />
+              ) : (
+                <Ionicons name="lock-closed" size={28} color={theme === 'dark' ? "#22304a" : "#FFD59E"} style={{ marginRight: 12 }} />
+              )}
+              <View>
+                <Text style={[
+                  styles.achievementTitle,
+                  item.unlocked && styles.achievementTitleUnlocked
+                ]}>
+                  {item.title}
+                </Text>
+                <Text style={[
+                  styles.achievementPoints,
+                  item.unlocked && styles.achievementPointsUnlocked
+                ]}>
+                  +{item.points} pts
+                </Text>
+              </View>
             </View>
-          </View>
-        )}
-      />
+          )}
+        />
       </View>
     </ScreenWrapper>
   )
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#FFF4E0',
-    alignItems: 'center',
-    paddingTop: 40,
-    paddingHorizontal: 18,
-  },
-  header: {
-    alignItems: 'center',
-    marginBottom: 30,
-  },
-  pointsText: {
-    fontSize: scale(32),
-    fontWeight: 'bold',
-    color: '#FF9900',
-    marginTop: 10,
-  },
-  subtitle: {
-    fontSize: 18,
-    color: '#555',
-    marginTop: 6,
-    marginBottom: 10,
-  },
-  list: {
-    width: '100%',
-    paddingBottom: 30,
-  },
-  achievementCard: {
-    width: '100%',
-    flexDirection: 'row',
-    alignItems: 'center',
-    backgroundColor: '#fff',
-    borderRadius: 14,
-    padding: 16,
-    marginBottom: 14,
-    shadowColor: '#FFA500',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.08,
-    shadowRadius: 6,
-    elevation: 2,
-  },
-  achievementTitle: {
-    fontSize: 17,
-    fontWeight: '600',
-    color: '#222',
-  },
-  achievementPoints: {
-    fontSize: 14,
-    color: '#FF9900',
-    marginTop: 2,
-  },
-  achievementCardUnlocked: {
-    backgroundColor: '#FFF8E1',
-    borderColor: '#FF9900',
-    shadowColor: '#FF9900',
-    elevation: 4,
-  },
-  achievementTitleUnlocked: {
-    color: '#FF9900',
-  },
-  achievementPointsUnlocked: {
-    color: '#B8860B',
-  },
-})
+function getThemedStyles(theme: 'light' | 'dark') {
+  const isDark = theme === 'dark'
+  return StyleSheet.create({
+    container: {
+      flex: 1,
+      backgroundColor: isDark ? '#181f2a' : '#FFF4E0',
+      alignItems: 'center',
+      paddingTop: 40,
+      paddingHorizontal: 18,
+    },
+    header: {
+      alignItems: 'center',
+      marginBottom: 30,
+    },
+    pointsText: {
+      fontSize: scale(32),
+      fontWeight: 'bold',
+      color: isDark ? '#7ecbff' : '#FF9900',
+      marginTop: 10,
+    },
+    subtitle: {
+      fontSize: 18,
+      color: isDark ? '#b0b8d1' : '#555',
+      marginTop: 6,
+      marginBottom: 10,
+    },
+    list: {
+      width: '100%',
+      paddingBottom: 30,
+    },
+    achievementCard: {
+      width: '100%',
+      flexDirection: 'row',
+      alignItems: 'center',
+      backgroundColor: isDark ? '#232f47' : '#fff',
+      borderRadius: 14,
+      padding: 16,
+      marginBottom: 14,
+      shadowColor: isDark ? '#0057b8' : '#FFA500',
+      shadowOffset: { width: 0, height: 2 },
+      shadowOpacity: 0.12,
+      shadowRadius: 6,
+      elevation: 2,
+    },
+    achievementTitle: {
+      fontSize: 17,
+      fontWeight: '600',
+      color: isDark ? '#e0e6f7' : '#222',
+    },
+    achievementPoints: {
+      fontSize: 14,
+      color: isDark ? '#7ecbff' : '#FF9900',
+      marginTop: 2,
+    },
+    achievementCardUnlocked: {
+      backgroundColor: isDark ? '#22304a' : '#FFF8E1',
+      borderColor: isDark ? '#7ecbff' : '#FF9900',
+      shadowColor: isDark ? '#7ecbff' : '#FF9900',
+      elevation: 4,
+    },
+    achievementTitleUnlocked: {
+      color: isDark ? '#7ecbff' : '#FF9900',
+    },
+    achievementPointsUnlocked: {
+      color: isDark ? '#b0b8d1' : '#B8860B',
+    },
+  })
+}

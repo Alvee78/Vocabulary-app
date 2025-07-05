@@ -4,6 +4,7 @@ import { ButtonProps } from '../types'
 import { colors, radius } from '../Constants/Theme'
 import { verticalScale } from 'react-native-size-matters'
 import Loading from './Loading'
+import { useTheme } from '../context/ThemeContext'
 
 const CustomButton = ({
     style,
@@ -11,32 +12,38 @@ const CustomButton = ({
     loading = false,
     children,
 }: ButtonProps) => {
+    const { theme } = useTheme()
+    const isDark = theme === 'dark'
+    const themedStyles = getThemedStyles(isDark)
+
     if (loading) {
         return (
-        <View style={[styles.button, style, { backgroundColor: 'transparent' }]}>
+        <View style={[themedStyles.button, style, { backgroundColor: 'transparent' }]}>
             <Loading/>
         </View>
         )
     }
-  return (
-    <TouchableOpacity
-        style={[styles.button, style]}
-        onPress={onPress}
-        disabled={loading}>
-        {children}
-    </TouchableOpacity>
-  )
+    return (
+        <TouchableOpacity
+            style={[themedStyles.button, style]}
+            onPress={onPress}
+            disabled={loading}>
+            {children}
+        </TouchableOpacity>
+    )
 }
 
 export default CustomButton
 
-const styles = StyleSheet.create({
-    button: {
-        backgroundColor: colors.primary10,
-        borderRadius: radius.md,
-        borderCurve: 'continuous',
-        height: verticalScale(48),
-        justifyContent: 'center',
-        alignItems: 'center',
-    }
-})
+function getThemedStyles(isDark: boolean) {
+    return StyleSheet.create({
+        button: {
+            backgroundColor: isDark ? '#0057b8' : colors.primary10, // dark blue in dark mode
+            borderRadius: radius.md,
+            borderCurve: 'continuous',
+            height: verticalScale(48),
+            justifyContent: 'center',
+            alignItems: 'center',
+        }
+    })
+}

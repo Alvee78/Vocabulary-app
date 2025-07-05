@@ -10,6 +10,7 @@ import { useUser } from '@clerk/clerk-expo'
 import { userAppData } from '../../Data/appData'
 import { scale } from 'react-native-size-matters'
 import ScreenWrapper from '../../Components/ScreenWraper2'
+import { useTheme } from '../../context/ThemeContext'
 
 export default function Home() {
   const router = useRouter();
@@ -18,8 +19,9 @@ export default function Home() {
   const { user , isLoaded } = useUser();
   const userId = user?.id;
   const dummyData = userAppData;
+  const { theme } = useTheme();
   const [userName, setUserName] = useState(null);
-
+  const styles = getThemedStyles(theme);
 
   // Dummy user data (replace with real data as needed)
   const users = {
@@ -156,90 +158,94 @@ export default function Home() {
   )
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    width: '100%',
-    backgroundColor: 'transparent', // light orange
-  },
-  profileHeader: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    backgroundColor: '#FFE5B4',
-    borderRadius: 22,
-    margin: 18,
-    padding: 15,
-    elevation: 5,
-    shadowColor: '#FFA500',
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.13,
-    shadowRadius: 10,
-    borderWidth: 1,
-    borderColor: '#FFD59E',
-  },
-  avatarWrapper: {
-    shadowColor: '#FFA500',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.18,
-    shadowRadius: 6,
-    borderRadius: 36,
-    backgroundColor: '#fff',
-    marginRight: 18,
-  },
-  avatar: {
-    width: 72,
-    height: 72,
-    borderRadius: 36,
-    borderWidth: 3,
-    borderColor: '#fff',
-    backgroundColor: '#fff',
-  },
-  profileInfo: {
-    flex: 1,
-    justifyContent: 'center',
-  },
-  userName: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    color: '#FF9900',
-    marginBottom: 8,
-    letterSpacing: 0.5,
-  },
-  statsRow: {
-    flexDirection: 'row',
-    gap: 20,
-    marginTop: 2,
-  },
-  statBox: {
-    backgroundColor: '#fff',
-    borderRadius: 12,
-    paddingVertical: 8,
-    paddingHorizontal: 18,
-    alignItems: 'center',
-    marginRight: 12,
-    elevation: 2,
-    shadowColor: '#FFA500',
-    shadowOffset: { width: 0, height: 1 },
-    shadowOpacity: 0.08,
-    shadowRadius: 3,
-  },
-  statLabel: {
-    fontSize: 13,
-    color: '#FFA500',
-    fontWeight: '600',
-    marginBottom: 2,
-    letterSpacing: 0.2,
-  },
-  statValue: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    color: '#222',
-  },
-  list: {
-    width: '100%',
-  },
-  listContent: {
-    padding: 16,
-    width: '100%',
-  },
-});
+function getThemedStyles(theme: 'light' | 'dark') {
+  const isDark = theme === 'dark';
+  return StyleSheet.create({
+    container: {
+      flex: 1,
+      width: '100%',
+      backgroundColor: isDark ? '#181f2a' : 'transparent', // deep blue for dark mode
+    },
+    profileHeader: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      backgroundColor: isDark ? '#22304a' : '#FFE5B4', // dark blue card in dark
+      borderRadius: 22,
+      marginHorizontal: 10,
+      marginBottom: 10,
+      padding: 15,
+      elevation: 5,
+      shadowColor: isDark ? '#0057b8' : '#FFA500',
+      shadowOffset: { width: 0, height: 4 },
+      shadowOpacity: 0.13,
+      shadowRadius: 10,
+      borderWidth: 1,
+      borderColor: isDark ? '#4ea8de' : '#FFD59E',
+    },
+    avatarWrapper: {
+      shadowColor: isDark ? '#0057b8' : '#FFA500',
+      shadowOffset: { width: 0, height: 2 },
+      shadowOpacity: 0.18,
+      shadowRadius: 6,
+      borderRadius: 36,
+      backgroundColor: isDark ? '#232f47' : '#fff',
+      marginRight: 18,
+    },
+    avatar: {
+      width: 72,
+      height: 72,
+      borderRadius: 36,
+      borderWidth: 3,
+      borderColor: isDark ? '#22304a' : '#fff',
+      backgroundColor: isDark ? '#232f47' : '#fff',
+    },
+    profileInfo: {
+      flex: 1,
+      justifyContent: 'center',
+    },
+    userName: {
+      fontSize: 24,
+      fontWeight: 'bold',
+      color: isDark ? '#7ecbff' : '#FF9900', // blue accent in dark
+      marginBottom: 8,
+      letterSpacing: 0.5,
+    },
+    statsRow: {
+      flexDirection: 'row',
+      gap: 20,
+      marginTop: 2,
+    },
+    statBox: {
+      backgroundColor: isDark ? '#232f47' : '#fff',
+      borderRadius: 12,
+      paddingVertical: 8,
+      paddingHorizontal: 18,
+      alignItems: 'center',
+      marginRight: 12,
+      elevation: 2,
+      shadowColor: isDark ? '#0057b8' : '#FFA500',
+      shadowOffset: { width: 0, height: 1 },
+      shadowOpacity: 0.08,
+      shadowRadius: 3,
+    },
+    statLabel: {
+      fontSize: 13,
+      color: isDark ? '#4ea8de' : '#FFA500', // blue accent in dark
+      fontWeight: '600',
+      marginBottom: 2,
+      letterSpacing: 0.2,
+    },
+    statValue: {
+      fontSize: 18,
+      fontWeight: 'bold',
+      color: isDark ? '#e0e6f7' : '#222', // near-white in dark
+    },
+    list: {
+      width: '100%',
+    },
+    listContent: {
+      padding: 16,
+      width: '100%',
+    },
+  });
+}

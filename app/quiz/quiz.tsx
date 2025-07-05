@@ -7,6 +7,8 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { updateinsertUserAppData } from '../../config/CloudData/updateInsert';
 import { useUser } from '@clerk/clerk-expo';
 import { LinearGradient } from 'expo-linear-gradient';
+import { useTheme } from '../../context/ThemeContext';
+import ScreenWrapper from '../../Components/ScreenWraper2';
 
 const Quiz = () => {
   const { user } = useUser();
@@ -17,6 +19,9 @@ const Quiz = () => {
   const { chapterNo } = useLocalSearchParams();
   const chapterNoInt = Number(chapterNo);
   const router = useRouter();
+  const { theme } = useTheme();
+  const isDark = theme === 'dark';
+  const styles = getThemedStyles(isDark);
   
   const passedQuizzes = (score: number, maxScore: number) => {
     return score / maxScore >= 0.8;
@@ -80,9 +85,13 @@ const Quiz = () => {
   const results = submitted ? getResults() : null;
 
   return (
+    <ScreenWrapper>
+    <View style={{ padding: 16, backgroundColor: theme === 'dark' ? '#232f47' : '#fff5f0', borderBottomWidth: 1, borderBottomColor: theme === 'dark' ? '#22304a' : '#ffe4d6' ,marginBottom: 16 }}>
+      <Text style={styles.headerTitle}>Chapter {chapterNoInt} Quiz</Text>
+    </View>
     <ScrollView contentContainerStyle={styles.container}>
       <LinearGradient
-        colors={['#FFF4E0', '#FFE5B4']}
+        colors={isDark ? ['#1a2236', '#232f47'] : ['#FFF4E0', '#FFE5B4']}
         style={StyleSheet.absoluteFill}
       />
       {data.map((q) => (
@@ -130,53 +139,84 @@ const Quiz = () => {
       </View>
     )}
     </ScrollView>
+    </ScreenWrapper>
   );
 };
 
-const styles = StyleSheet.create({
-  container: {
-    padding: 20,
-    paddingBottom: 100,
-  },
-  questionBlock: {
-    marginBottom: 30,
-  },
-  questionText: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    marginBottom: 10,
-  },
-  optionButton: {
-    padding: 12,
-    backgroundColor: '#eee',
-    borderRadius: 8,
-    marginBottom: 10,
-  },
-  optionText: {
-    fontSize: 16,
-  },
-  selectedOption: {
-    backgroundColor: '#d0e8ff',
-  },
-  correctOption: {
-    backgroundColor: '#a4f4a4',
-  },
-  incorrectOption: {
-    backgroundColor: '#f4a4a4',
-  },
-  resultBlock: {
-    marginTop: 30,
-    padding: 15,
-    backgroundColor: '#f0f0f0',
-    borderRadius: 8,
-  },
-  resultText: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    color: '#333',
-    textAlign: 'center',
-    marginBottom: 15,
-  },
-});
+function getThemedStyles(isDark: boolean) {
+  return StyleSheet.create({
+    container: {
+      padding: 20,
+      paddingBottom: 100,
+      backgroundColor: isDark ? '#181f2a' : 'transparent',
+      minHeight: '100%',
+    },
+    questionBlock: {
+      marginBottom: 30,
+      backgroundColor: isDark ? '#232f47' : '#fff',
+      borderRadius: 12,
+      padding: 16,
+      shadowColor: isDark ? '#0057b8' : '#FFD59E',
+      shadowOffset: { width: 0, height: 2 },
+      shadowOpacity: 0.10,
+      shadowRadius: 6,
+      elevation: 2,
+    },
+    questionText: {
+      fontSize: 18,
+      fontWeight: 'bold',
+      marginBottom: 10,
+      color: isDark ? '#7ecbff' : '#222',
+    },
+    optionButton: {
+      padding: 12,
+      backgroundColor: isDark ? '#22304a' : '#eee',
+      borderRadius: 8,
+      marginBottom: 10,
+      borderWidth: 1,
+      borderColor: isDark ? '#2d3553' : '#ddd',
+    },
+    optionText: {
+      fontSize: 16,
+      color: isDark ? '#e0e6f7' : '#222',
+    },
+    selectedOption: {
+      backgroundColor: isDark ? '#0057b8' : '#d0e8ff',
+      borderColor: isDark ? '#7ecbff' : '#007bff',
+    },
+    correctOption: {
+      backgroundColor: isDark ? '#28a745' : '#a4f4a4',
+      borderColor: isDark ? '#28a745' : '#34c759',
+    },
+    incorrectOption: {
+      backgroundColor: isDark ? '#b22234' : '#f4a4a4',
+      borderColor: isDark ? '#ff4d6d' : '#e57373',
+    },
+    resultBlock: {
+      marginTop: 30,
+      padding: 15,
+      backgroundColor: isDark ? '#232f47' : '#f0f0f0',
+      borderRadius: 8,
+      shadowColor: isDark ? '#0057b8' : '#FFD59E',
+      shadowOffset: { width: 0, height: 2 },
+      shadowOpacity: 0.10,
+      shadowRadius: 6,
+      elevation: 2,
+    },
+    resultText: {
+      fontSize: 18,
+      fontWeight: 'bold',
+      color: isDark ? '#7ecbff' : '#333',
+      textAlign: 'center',
+      marginBottom: 15,
+    },
+    headerTitle: {
+      fontSize: 24,
+      fontWeight: 'bold',
+      color: isDark ? '#7ecbff' : '#222',
+      marginBottom: 8,
+    },
+  });
+}
 
 export default Quiz;

@@ -16,6 +16,8 @@ import {
 } from 'react-native';
 import { useSQLiteContext } from 'expo-sqlite';
 import ScreenWrapper from '../../Components/ScreenWraper2';
+import { useTheme } from '../../context/ThemeContext';
+import { get } from 'react-native/Libraries/TurboModule/TurboModuleRegistry';
 
 // Define the database file name
 const DATABASE_NAME = 'dictionary.db';
@@ -31,6 +33,8 @@ interface DictionaryEntry {
 }
 
 export default function App() {
+  const { theme } = useTheme();
+  const styles = getThemedStyles(theme);
   return (
     <ScreenWrapper>
       <Content />
@@ -40,6 +44,8 @@ export default function App() {
 
 export function Content() {
   const db = useSQLiteContext();
+  const { theme } = useTheme();
+  const styles = getThemedStyles(theme);
   const [entries, setEntries] = useState<DictionaryEntry[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -107,19 +113,7 @@ export function Content() {
     setupDatabaseAndLoadData();
   }, [db]);
 
-  const loadRandomWords = async () => {
-    try {
-      const result = await db.getAllAsync<DictionaryEntry>(
-        'SELECT * FROM Dictionary ORDER BY RANDOM() LIMIT 30'
-      );
-      setEntries(result);
-      setSearchResults(null);
-      setNoResults(false);
-    } catch (err) {
-      console.error('Error loading random words:', err);
-      setError('Failed to load random dictionary entries.');
-    }
-  };
+
 
   const toggleFavorite = async (id: number, currentStatus: number) => {
     if (!db) {
@@ -187,8 +181,8 @@ export function Content() {
   }
 
   return (
-    <SafeAreaView style={styles.container}>
-      <StatusBar barStyle="dark-content" />
+    <ScreenWrapper>
+    <View style={styles.container}>
       <Text style={styles.header}>My Favorite</Text>
 
       <ScrollView
@@ -236,271 +230,276 @@ export function Content() {
           </View>
         )}
       </ScrollView>
-    </SafeAreaView>
+    </View>
+  </ScreenWrapper>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: 'transparent',
-    paddingTop: StatusBar.currentHeight,
-  },
-  loadingContainer: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#f8f9fa',
-  },
-  loadingText: {
-    marginTop: 10,
-    fontSize: 16,
-    color: '#343a40',
-  },
-  errorContainer: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#ffe0e0',
-    padding: 20,
-  },
-  errorText: {
-    fontSize: 16,
-    color: '#dc3545',
-    textAlign: 'center',
-    marginBottom: 5,
-  },
-  header: {
-    fontSize: 28,
-    fontWeight: 'bold',
-    color: '#212529',
-    textAlign: 'center',
-    marginVertical: 20,
-    paddingHorizontal: 15,
-  },
-  addWordHeader: {
-    fontSize: 22,
-    fontWeight: 'bold',
-    color: '#343a40',
-    marginBottom: 15,
-    textAlign: 'center',
-  },
-  input: {
-    height: 45,
-    borderColor: '#ced4da',
-    borderWidth: 1,
-    borderRadius: 8,
-    paddingHorizontal: 15,
-    marginBottom: 10,
-    fontSize: 16,
-    backgroundColor: '#ffffff',
-  },
-  addButton: {
-    backgroundColor: '#28a745',
-    paddingVertical: 12,
-    borderRadius: 8,
-    alignItems: 'center',
-    marginTop: 10,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.2,
-    shadowRadius: 3,
-    elevation: 3,
-  },
-  addButtonText: {
-    color: '#ffffff',
-    fontSize: 18,
-    fontWeight: 'bold',
-  },
-  cancelButton: {
-    backgroundColor: '#6c757d',
-    paddingVertical: 12,
-    borderRadius: 8,
-    alignItems: 'center',
-    marginTop: 10,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.2,
-    shadowRadius: 3,
-    elevation: 3,
-  },
-  cancelButtonText: {
-    color: '#ffffff',
-    fontSize: 18,
-    fontWeight: 'bold',
-  },
-  searchRow: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginBottom: 12,
-    gap: 8,
-    paddingHorizontal: 15,
-  },
-  searchInput: {
-    flex: 1,
-    borderWidth: 1,
-    borderColor: '#aaa',
-    borderRadius: 8,
-    padding: 8,
-    fontSize: 16,
-    backgroundColor: '#ffffff',
-  },
-  actionButtonsContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    paddingHorizontal: 15,
-    marginBottom: 10,
-    gap: 10,
-  },
-  shuffleButton: {
-    backgroundColor: '#ffc107',
-    paddingVertical: 12,
-    borderRadius: 8,
-    alignItems: 'center',
-    flex: 1,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.2,
-    shadowRadius: 3,
-    elevation: 3,
-  },
-  shuffleButtonText: {
-    color: '#343a40',
-    fontSize: 16,
-    fontWeight: 'bold',
-  },
-  favoritesButton: {
-    backgroundColor: '#17a2b8',
-    paddingVertical: 12,
-    borderRadius: 8,
-    alignItems: 'center',
-    flex: 1,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.2,
-    shadowRadius: 3,
-    elevation: 3,
-  },
-  favoritesButtonText: {
-    color: '#ffffff',
-    fontSize: 16,
-    fontWeight: 'bold',
-  },
-  listHeader: {
-    fontSize: 22,
-    fontWeight: 'bold',
-    color: '#343a40',
-    marginBottom: 15,
-    marginTop: 10,
-    textAlign: 'center',
-  },
-  listContainer: {
-    flex: 1,
-    paddingHorizontal: 15,
-  },
-  itemContainer: {
-    backgroundColor: '#ffffff',
-    borderRadius: 10,
-    padding: 15,
-    marginBottom: 10,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.1,
-    shadowRadius: 3,
-    elevation: 3,
-    borderLeftWidth: 5,
-    borderLeftColor: '#007bff',
-  },
-  wordAndFavorite: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    marginBottom: 5,
-  },
-  word: {
-    fontSize: 20,
-    fontWeight: 'bold',
-    color: '#007bff',
-    flexShrink: 1,
-    marginRight: 10,
-  },
-  partsOfSpeech: {
-    fontSize: 14,
-    fontStyle: 'italic',
-    color: '#6c757d',
-    marginBottom: 5,
-  },
-  meaning: {
-    fontSize: 16,
-    color: '#343a40',
-    lineHeight: 22,
-    marginBottom: 10,
-  },
-  example: {
-    fontSize: 14,
-    color: '#495057',
-    fontStyle: 'italic',
-    borderLeftWidth: 2,
-    borderLeftColor: '#ced4da',
-    paddingLeft: 10,
-    marginBottom: 5,
-  },
-  favoriteButton: {
-    padding: 5,
-  },
-  favoriteIcon: {
-    fontSize: 24,
-  },
-  noDataContainer: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    padding: 20,
-  },
-  noDataText: {
-    fontSize: 18,
-    color: '#6c757d',
-    textAlign: 'center',
-    marginBottom: 10,
-  },
-  modalOverlay: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: 'rgba(0,0,0,0.5)',
-  },
-  modalContent: {
-    backgroundColor: '#ffffff',
-    borderRadius: 15,
-    padding: 25,
-    width: '90%',
-    maxHeight: '80%',
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.25,
-    shadowRadius: 4,
-    elevation: 5,
-  },
-  plusButton: {
-    position: 'absolute',
-    bottom: 10,
-    right: 30,
-    backgroundColor: '#007bff',
-    width: 60,
-    height: 60,
-    borderRadius: 30,
-    justifyContent: 'center',
-    alignItems: 'center',
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.3,
-    shadowRadius: 5,
-    elevation: 8,
-    zIndex: 10,
-  },
-  plusButtonText: {
-    color: '#ffffff',
-    fontSize: 35,
-    lineHeight: 35,
-  },
-});
+function getThemedStyles(theme: 'light' | 'dark') {
+  const isDark = theme === 'dark';
+
+  return StyleSheet.create({
+    container: {
+      flex: 1,
+      backgroundColor: 'transparent',
+      paddingTop: StatusBar.currentHeight,
+    },
+    loadingContainer: {
+      flex: 1,
+      justifyContent: 'center',
+      alignItems: 'center',
+      backgroundColor: isDark ? '#343a40' : '#f8f9fa',
+    },
+    loadingText: {
+      marginTop: 10,
+      fontSize: 16,
+      color: isDark ? '#ffffff' : '#343a40',
+    },
+    errorContainer: {
+      flex: 1,
+      justifyContent: 'center',
+      alignItems: 'center',
+      backgroundColor: isDark ? '#343a40' : '#ffe0e0',
+      padding: 20,
+    },
+    errorText: {
+      fontSize: 16,
+      color: isDark ? '#ffffff' : '#dc3545',
+      textAlign: 'center',
+      marginBottom: 5,
+    },
+    header: {
+      fontSize: 28,
+      fontWeight: 'bold',
+      color: isDark ? '#ffffff' : '#212529',
+      textAlign: 'center',
+      marginVertical: 0,
+      paddingHorizontal: 15,
+    },
+    addWordHeader: {
+      fontSize: 22,
+      fontWeight: 'bold',
+      color: isDark ? '#ffffff' : '#343a40',
+      marginBottom: 15,
+      textAlign: 'center',
+    },
+    input: {
+      height: 45,
+      borderColor: isDark ? '#495057' : '#ced4da',
+      borderWidth: 1,
+      borderRadius: 8,
+      paddingHorizontal: 15,
+      marginBottom: 10,
+      fontSize: 16,
+      backgroundColor: isDark ? '#495057' : '#ffffff',
+    },
+    addButton: {
+      backgroundColor: isDark ? '#28a745' : '#28a745',
+      paddingVertical: 12,
+      borderRadius: 8,
+      alignItems: 'center',
+      marginTop: 10,
+      shadowColor: isDark ? '#000' : '#000',
+      shadowOffset: { width: 0, height: 2 },
+      shadowOpacity: 0.2,
+      shadowRadius: 3,
+      elevation: 3,
+    },
+    addButtonText: {
+      color: isDark ? '#ffffff' : '#ffffff',
+      fontSize: 18,
+      fontWeight: 'bold',
+    },
+    cancelButton: {
+      backgroundColor: isDark ? '#6c757d' : '#6c757d',
+      paddingVertical: 12,
+      borderRadius: 8,
+      alignItems: 'center',
+      marginTop: 10,
+      shadowColor: isDark ? '#000' : '#000',
+      shadowOffset: { width: 0, height: 2 },
+      shadowOpacity: 0.2,
+      shadowRadius: 3,
+      elevation: 3,
+    },
+    cancelButtonText: {
+      color: isDark ? '#ffffff' : '#ffffff',
+      fontSize: 18,
+      fontWeight: 'bold',
+    },
+    searchRow: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      marginBottom: 12,
+      gap: 8,
+      paddingHorizontal: 15,
+    },
+    searchInput: {
+      flex: 1,
+      borderWidth: 1,
+      borderColor: isDark ? '#495057' : '#aaa',
+      borderRadius: 8,
+      padding: 8,
+      fontSize: 16,
+      backgroundColor: isDark ? '#495057' : '#ffffff',
+    },
+    actionButtonsContainer: {
+      flexDirection: 'row',
+      justifyContent: 'space-around',
+      paddingHorizontal: 15,
+      marginBottom: 10,
+      gap: 10,
+    },
+    shuffleButton: {
+      backgroundColor: isDark ? '#ffc107' : '#ffc107',
+      paddingVertical: 12,
+      borderRadius: 8,
+      alignItems: 'center',
+      flex: 1,
+      shadowColor: '#000',
+      shadowOffset: { width: 0, height: 2 },
+      shadowOpacity: 0.2,
+      shadowRadius: 3,
+      elevation: 3,
+    },
+    shuffleButtonText: {
+      color: isDark ? '#ffffff' : '#343a40',
+      fontSize: 16,
+      fontWeight: 'bold',
+    },
+    favoritesButton: {
+      backgroundColor: isDark ? '#17a2b8' : '#17a2b8',
+      paddingVertical: 12,
+      borderRadius: 8,
+      alignItems: 'center',
+      flex: 1,
+      shadowColor: '#000',
+      shadowOffset: { width: 0, height: 2 },
+      shadowOpacity: 0.2,
+      shadowRadius: 3,
+      elevation: 3,
+    },
+    favoritesButtonText: {
+      color: isDark ? '#ffffff' : '#ffffff',
+      fontSize: 16,
+      fontWeight: 'bold',
+    },
+    listHeader: {
+      fontSize: 22,
+      fontWeight: 'bold',
+      color: isDark ? '#ffffff' : '#343a40',
+      marginBottom: 15,
+      marginTop: 10,
+      textAlign: 'center',
+    },
+    listContainer: {
+      flex: 1,
+      paddingHorizontal: 15,
+    },
+itemContainer: {
+  backgroundColor: isDark ? '#232f47' : '#ffffff', // darker card for dark mode
+  borderRadius: 12,
+  padding: 16,
+  marginBottom: 14,
+  shadowColor: isDark ? '#000' : '#000',
+  shadowOffset: { width: 0, height: 2 },
+  shadowOpacity: 0.18,
+  shadowRadius: 4,
+  elevation: 4,
+  borderLeftWidth: 5,
+  borderLeftColor: isDark ? '#0057b8' : '#007bff', // dark blue for dark mode
+},
+    wordAndFavorite: {
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      alignItems: 'center',
+      marginBottom: 5,
+    },
+    word: {
+  fontSize: 22,
+  fontWeight: 'bold',
+  color: isDark ? '#7ecbff' : '#007bff', // light blue in dark mode
+  flexShrink: 1,
+  marginRight: 10,
+},
+    partsOfSpeech: {
+  fontSize: 15,
+  fontStyle: 'italic',
+  color: isDark ? '#b0b8d1' : '#6c757d', // muted blue-gray in dark mode
+  marginBottom: 5,
+},
+meaning: {
+  fontSize: 17,
+  color: isDark ? '#e0e6f7' : '#343a40', // near-white in dark mode
+  lineHeight: 24,
+  marginBottom: 10,
+},
+    example: {
+  fontSize: 15,
+  color: isDark ? '#a3bffa' : '#495057', // soft blue in dark mode
+  fontStyle: 'italic',
+  borderLeftWidth: 2,
+  borderLeftColor: isDark ? '#3b5998' : '#ced4da', // blue border in dark mode
+  paddingLeft: 10,
+  marginBottom: 5,
+},
+    favoriteButton: {
+      padding: 5,
+    },
+    favoriteIcon: {
+      fontSize: 24,
+    },
+    noDataContainer: {
+      flex: 1,
+      justifyContent: 'center',
+      alignItems: 'center',
+      padding: 20,
+    },
+    noDataText: {
+      fontSize: 18,
+      color: '#6c757d',
+      textAlign: 'center',
+      marginBottom: 10,
+    },
+    modalOverlay: {
+      flex: 1,
+      justifyContent: 'center',
+      alignItems: 'center',
+      backgroundColor: 'rgba(0,0,0,0.5)',
+    },
+    modalContent: {
+      backgroundColor: '#ffffff',
+      borderRadius: 15,
+      padding: 25,
+      width: '90%',
+      maxHeight: '80%',
+      shadowColor: '#000',
+      shadowOffset: { width: 0, height: 4 },
+      shadowOpacity: 0.25,
+      shadowRadius: 4,
+      elevation: 5,
+    },
+    plusButton: {
+      position: 'absolute',
+      bottom: 10,
+      right: 30,
+      backgroundColor: '#007bff',
+      width: 60,
+      height: 60,
+      borderRadius: 30,
+      justifyContent: 'center',
+      alignItems: 'center',
+      shadowColor: '#000',
+      shadowOffset: { width: 0, height: 4 },
+      shadowOpacity: 0.3,
+      shadowRadius: 5,
+      elevation: 8,
+      zIndex: 10,
+    },
+    plusButtonText: {
+      color: '#ffffff',
+      fontSize: 35,
+      lineHeight: 35,
+    },
+  });
+}

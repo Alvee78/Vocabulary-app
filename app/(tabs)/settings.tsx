@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
   View,
   Text,
@@ -6,176 +6,149 @@ import {
   SafeAreaView,
   StatusBar,
   TouchableOpacity,
-  Switch, // For toggle settings
-  ScrollView, // For scrollable content
+  Switch,
+  ScrollView,
 } from 'react-native';
 import SignOutButton from '../../Components/SignOutButton';
-
-// Placeholder for ScreenWrapper component if you use it globally
-// If you don't have a global ScreenWrapper, you can remove this and
-// directly apply styles to the top-level View in this component.
-const ScreenWrapper = ({ children }) => (
-  <View style={settingsScreenStyles.wrapper}>
-    {children}
-  </View>
-);
+import ScreenWrapper from '../../Components/ScreenWraper2';
+import { useTheme } from '../../context/ThemeContext';
 
 export default function SettingsScreen() {
-  const [isNotificationsEnabled, setIsNotificationsEnabled] = useState(true);
-  const [isDarkModeEnabled, setIsDarkModeEnabled] = useState(false); // Example setting
+  const [isNotificationsEnabled, setIsNotificationsEnabled] = React.useState(true);
+  const { theme, toggleTheme } = useTheme();
+
+  const isDarkModeEnabled = theme === 'dark';
 
   const toggleNotifications = () => setIsNotificationsEnabled(previousState => !previousState);
-  const toggleDarkMode = () => setIsDarkModeEnabled(previousState => !previousState);
+
+  // Dynamic styles based on theme
+  const themedStyles = getThemedStyles(theme);
 
   return (
     <ScreenWrapper>
-      <SafeAreaView style={settingsScreenStyles.container}>
-        {/* <StatusBar barStyle="dark-content" backgroundColor="#FFDAB9" /> Light orange status bar */}
-        <Text style={settingsScreenStyles.header}>Settings</Text>
+      <View style={themedStyles.container}>
+        <Text style={themedStyles.header}>Settings</Text>
 
-        <ScrollView style={settingsScreenStyles.settingsList}>
-          {/* General Settings Section */}
-          <Text style={settingsScreenStyles.sectionHeader}>General</Text>
-          <View style={settingsScreenStyles.settingItem}>
-            <Text style={settingsScreenStyles.settingText}>Enable Notifications</Text>
+        <ScrollView style={themedStyles.settingsList}>
+          <Text style={themedStyles.sectionHeader}>General</Text>
+          <View style={themedStyles.settingItem}>
+            <Text style={themedStyles.settingText}>Enable Notifications</Text>
             <Switch
-              trackColor={{ false: "#f4f3f4", true: "#FFA07A" }} // Light orange for active track
-              thumbColor={isNotificationsEnabled ? "#FF6347" : "#f4f3f4"} // Tomato red for active thumb
+              trackColor={{ false: "#f4f3f4", true: "#FFA07A" }}
+              thumbColor={isNotificationsEnabled ? "#FF6347" : "#f4f3f4"}
               ios_backgroundColor="#3e3e3e"
               onValueChange={toggleNotifications}
               value={isNotificationsEnabled}
             />
           </View>
 
-          <View style={settingsScreenStyles.settingItem}>
-            <Text style={settingsScreenStyles.settingText}>Dark Mode</Text>
+          <View style={themedStyles.settingItem}>
+            <Text style={themedStyles.settingText}>Dark Mode</Text>
             <Switch
               trackColor={{ false: "#f4f3f4", true: "#FFA07A" }}
               thumbColor={isDarkModeEnabled ? "#FF6347" : "#f4f3f4"}
               ios_backgroundColor="#3e3e3e"
-              onValueChange={toggleDarkMode}
+              onValueChange={toggleTheme}
               value={isDarkModeEnabled}
             />
           </View>
 
-          <TouchableOpacity style={settingsScreenStyles.settingButton}>
-            <Text style={settingsScreenStyles.settingButtonText}>Change Password</Text>
+          {/* <TouchableOpacity style={themedStyles.settingButton}>
+            <Text style={themedStyles.settingButtonText}>Change Password</Text>
+          </TouchableOpacity> */}
+
+          <Text style={themedStyles.sectionHeader}>About</Text>
+          <TouchableOpacity style={themedStyles.settingButton}>
+            <Text style={themedStyles.settingButtonText}>Privacy Policy</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={themedStyles.settingButton}>
+            <Text style={themedStyles.settingButtonText}>Terms of Service</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={themedStyles.settingButton}>
+            <Text style={themedStyles.settingButtonText}>App Version</Text>
+            <Text style={themedStyles.settingValue}>1.0.0</Text>
           </TouchableOpacity>
 
-          {/* About Section */}
-          <Text style={settingsScreenStyles.sectionHeader}>About</Text>
-          <TouchableOpacity style={settingsScreenStyles.settingButton}>
-            <Text style={settingsScreenStyles.settingButtonText}>Privacy Policy</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={settingsScreenStyles.settingButton}>
-            <Text style={settingsScreenStyles.settingButtonText}>Terms of Service</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={settingsScreenStyles.settingButton}>
-            <Text style={settingsScreenStyles.settingButtonText}>App Version</Text>
-            <Text style={settingsScreenStyles.settingValue}>1.0.0</Text>
-          </TouchableOpacity>
-
-          {/* Logout Button */}
           <SignOutButton />
-
         </ScrollView>
-      </SafeAreaView>
+      </View>
     </ScreenWrapper>
   );
 }
 
-const settingsScreenStyles = StyleSheet.create({
-  wrapper: {
-    flex: 1,
-    backgroundColor: '#FFEFD5', // Very light peach/orange background for the wrapper
-  },
-  container: {
-    flex: 1,
-    backgroundColor: '#FFFAF0', // Floral White - a soft, light orange-ish white
-    paddingTop: StatusBar.currentHeight,
-  },
-  header: {
-    fontSize: 30,
-    fontWeight: 'bold',
-    color: '#FF6347', // Tomato - a vibrant orange-red
-    textAlign: 'center',
-    marginVertical: 25,
-    paddingHorizontal: 15,
-  },
-  settingsList: {
-    flex: 1,
-    paddingHorizontal: 20,
-  },
-  sectionHeader: {
-    fontSize: 20,
-    fontWeight: 'bold',
-    color: '#FF8C00', // Dark Orange
-    marginTop: 20,
-    marginBottom: 10,
-    borderBottomWidth: 1,
-    borderBottomColor: '#FFDAB9', // Peach Puff - light orange border
-    paddingBottom: 5,
-  },
-  settingItem: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    backgroundColor: '#FFF5EE', // Seashell - very light orange-pink
-    borderRadius: 10,
-    paddingVertical: 15,
-    paddingHorizontal: 15,
-    marginBottom: 10,
-    shadowColor: '#FF8C00', // Dark Orange shadow
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.1,
-    shadowRadius: 3,
-    elevation: 2,
-  },
-  settingText: {
-    fontSize: 18,
-    color: '#333333',
-  },
-  settingValue: {
-    fontSize: 16,
-    color: '#666666',
-  },
-  settingButton: {
-    backgroundColor: '#FFDAB9', // Peach Puff
-    borderRadius: 10,
-    paddingVertical: 15,
-    paddingHorizontal: 15,
-    marginBottom: 10,
-    alignItems: 'center',
-    shadowColor: '#FF8C00',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.1,
-    shadowRadius: 3,
-    elevation: 2,
-    flexDirection: 'row', // To align text and value if present
-    justifyContent: 'space-between', // To align text and value if present
-  },
-  settingButtonText: {
-    fontSize: 18,
-    color: '#FF6347', // Tomato
-    fontWeight: '500',
-  },
-  logoutButton: {
-    backgroundColor: '#FF4500', // Orange Red
-    borderRadius: 10,
-    paddingVertical: 15,
-    paddingHorizontal: 15,
-    marginTop: 30,
-    marginBottom: 50, // More space at the bottom
-    alignItems: 'center',
-    shadowColor: '#FF4500',
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.2,
-    shadowRadius: 5,
-    elevation: 5,
-  },
-  logoutButtonText: {
-    fontSize: 18,
-    color: '#FFFFFF',
-    fontWeight: 'bold',
-  },
-});
+// Dynamic styles based on theme
+function getThemedStyles(theme: 'light' | 'dark') {
+  const isDark = theme === 'dark';
+  return StyleSheet.create({
+    container: {
+      flex: 1,
+      backgroundColor: isDark ? '#181f2a' : '#FFFAF0', // deep blue for dark mode
+      paddingTop: StatusBar.currentHeight,
+    },
+    header: {
+      fontSize: 30,
+      fontWeight: 'bold',
+      color: isDark ? '#7ecbff' : '#FF6347', // blue accent in dark
+      textAlign: 'center',
+      marginVertical: 25,
+      paddingHorizontal: 15,
+    },
+    settingsList: {
+      flex: 1,
+      paddingHorizontal: 20,
+    },
+    sectionHeader: {
+      fontSize: 20,
+      fontWeight: 'bold',
+      color: isDark ? '#4ea8de' : '#FF8C00', // blue accent in dark
+      marginTop: 20,
+      marginBottom: 10,
+      borderBottomWidth: 1,
+      borderBottomColor: isDark ? '#22304a' : '#FFDAB9', // blue border in dark
+      paddingBottom: 5,
+    },
+    settingItem: {
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      alignItems: 'center',
+      backgroundColor: isDark ? '#232f47' : '#FFF5EE', // blue card in dark
+      borderRadius: 10,
+      paddingVertical: 15,
+      paddingHorizontal: 15,
+      marginBottom: 10,
+      shadowColor: isDark ? '#0057b8' : '#FF8C00', // blue shadow in dark
+      shadowOffset: { width: 0, height: 2 },
+      shadowOpacity: 0.12,
+      shadowRadius: 4,
+      elevation: 2,
+    },
+    settingText: {
+      fontSize: 18,
+      color: isDark ? '#e0e6f7' : '#333333', // light blue text in dark
+    },
+    settingValue: {
+      fontSize: 16,
+      color: isDark ? '#a3bffa' : '#666666', // soft blue in dark
+    },
+    settingButton: {
+      backgroundColor: isDark ? '#22304a' : '#FFDAB9', // blue button in dark
+      borderRadius: 10,
+      paddingVertical: 15,
+      paddingHorizontal: 15,
+      marginBottom: 10,
+      alignItems: 'center',
+      shadowColor: isDark ? '#0057b8' : '#FF8C00',
+      shadowOffset: { width: 0, height: 2 },
+      shadowOpacity: 0.12,
+      shadowRadius: 4,
+      elevation: 2,
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+    },
+    settingButtonText: {
+      fontSize: 18,
+      color: isDark ? '#7ecbff' : '#FF6347', // blue accent in dark
+      fontWeight: '500',
+    },
+  });
+}
