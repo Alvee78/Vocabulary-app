@@ -1,35 +1,29 @@
-import  { useEffect, useRef, useState } from 'react'
+import  { useState } from 'react'
 import ScreenWrapper from '../../Components/ScreenWrapper'
-import { colors, spacing } from '../../Constants/Theme'
-import welcome from '.'
+import { spacing } from '../../Constants/Theme'
 import { verticalScale } from 'react-native-size-matters'
 import Typography from '../../Components/Typography'
 import BackButton from '../../Components/backButton'
 import Input from '../../Components/input'
 import { EnvelopeSimple, Password } from 'phosphor-react-native'
-import CustomButton from '../../Components/CustomButton'
-import { HOST_URL } from '../../Constants/MagicWord'
-import AsyncStorage from '@react-native-async-storage/async-storage'
 import CustomButton2 from '../../Components/CustomButton2'
-import { useSignUp } from '@clerk/clerk-expo'
-import { Link, useRouter } from 'expo-router'
 import { useSignIn } from '@clerk/clerk-expo'
+import { Link, useRouter } from 'expo-router'
 import { Alert, TouchableOpacity, View, StyleSheet } from 'react-native'
-import React from 'react'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 import { useUser } from '@clerk/clerk-expo';
-import { loadUserAppData } from '../../config/CloudData/loadUserAppData'
+
+const accentColor = '#FF9900';
+const secondaryText = '#B8860B';
+const backgroundColor = '#FFF4E0';
 
 const Login = () => {
-  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
-  const { user} = useUser();
-  const userId = user?.id;
+  const { user } = useUser();
   const { signIn, setActive, isLoaded } = useSignIn();
-  const [pendingLogin, setPendingLogin] = useState<boolean>(false);
-
-
-  const [emailAddress, setEmailAddress] = React.useState<string>('');
-  const [password, setPassword] = React.useState<string>('');
+  const [emailAddress, setEmailAddress] = useState('');
+  const [password, setPassword] = useState('');
 
   const handleLogin = () => {
     if(!emailAddress || !password) {
@@ -37,7 +31,6 @@ const Login = () => {
       return;
     }
     onSignInPress();
-    console.log("Logging in with", emailAddress, password);
   }
 
   const onSignInPress = async () => {
@@ -51,93 +44,77 @@ const Login = () => {
 
       if (signInAttempt.status === 'complete') {
         await setActive({ session: signInAttempt.createdSessionId });
-        // Store user email in AsyncStorage
         await AsyncStorage.setItem('dataStoreStatus', "New login");
         router.replace('/');
       } else {
         Alert.alert('Error', 'Invalid email or password. Please try again.');
-        console.log(JSON.stringify(signInAttempt, null, 2))
       }
     } catch (err) {
       Alert.alert('Error!', 'Failed to log in. Please check your credentials and try again.');
-      console.log(JSON.stringify(err, null, 2))
     } finally {
       setIsLoading(false);
     }
   }
-  // This effect runs when user is updated
-
 
   return (
     <ScreenWrapper>
-      <View style={styles.container}>
-        <BackButton/>
-        <View style={{gap: spacing.xs, marginTop: spacing.md}}>
-          <Typography size={20} fontWeight={'800'} color={colors.text}>
-            Hey there!👋
+      <View style={[styles.container]}>
+        <View style={styles.card}>
+          <Typography size={24} fontWeight={'800'} color={accentColor} style={{ marginBottom: spacing.xs }}>
+            Welcome Back!
           </Typography>
-          
-          <Typography size={16} color={colors.textSecondary}>
+          <Typography size={16} color={secondaryText} style={{ marginBottom: spacing.sm }}>
             Please enter your credentials to continue...
           </Typography>
-          {/* This is where you would typically include a form for login credentials */}
           <View style={styles.form}>
-            <Typography size={16} fontWeight={'600'} color={colors.text}>
+            <Typography size={16} fontWeight={'600'} color={secondaryText}>
               Email:
             </Typography>
             <Input
-              inputStyle={{flex: 1}}
+              inputStyle={{flex: 1 , color: '#3E2723'}}
               placeholder='Enter your email'
+              placeholderTextColor={secondaryText}
               keyboardType='email-address'
+              autoCapitalize='none'
               onChangeText={setEmailAddress}
-              icon={<EnvelopeSimple size={32} color={colors.white} weight='bold' />}
+              icon={<EnvelopeSimple size={32} color={accentColor} weight='bold' />}
             />
           </View>
           <View style={styles.form}>
-            <Typography size={16} fontWeight={'600'} color={colors.text}>
+            <Typography size={16} fontWeight={'600'} color={secondaryText}>
               Password:
             </Typography>
             <Input
-              inputStyle={{flex: 1}}
+              inputStyle={{flex: 1 , color: '#3E2723'}}
               placeholder='Enter your password'
+              placeholderTextColor={secondaryText}
               secureTextEntry={true}
               onChangeText={setPassword}
-              icon={<Password size={32} color={colors.white} weight='bold' />}
+              icon={<Password size={32} color={accentColor} weight='bold' />}
             />
           </View>
 
-          <View style={styles.forgotPasswordText}>
-            <TouchableOpacity
-              onPress={() => console.log("Forgot Password Pressed")}
-              style={{alignSelf: 'flex-end', padding: 0}}
-              >
-              <Typography size={14}>
-                Forgot Password?
-              </Typography>
-            </TouchableOpacity>
-          </View>
-
-          <View>
-            <CustomButton2
-              onPress={handleLogin}
-              loading={isLoading}>
-              <Typography
-                size={16}
-                fontWeight={'600'}
-                color={colors.neutral90}
-              >
-                Log In
-              </Typography>
-            </CustomButton2>
-          </View>
-          <View style= {styles.footer}>
-            <Typography size={14} color={colors.textSecondary}>
+          <CustomButton2
+            onPress={handleLogin}
+            loading={isLoading}
+            style={styles.loginButton}
+          >
+            <Typography
+              size={16}
+              fontWeight={'600'}
+              color="#fff"
+            >
+              Log In
+            </Typography>
+          </CustomButton2>
+          <View style={styles.footer}>
+            <Typography size={14} color={secondaryText}>
               Don't have an account?{' '}
             </Typography>
             <TouchableOpacity
               onPress={() => router.replace('/register')}
             >
-              <Typography size={14} color={colors.warning} fontWeight={'700'}>
+              <Typography size={14} color={accentColor} fontWeight={'700'}>
                 Sign Up
               </Typography>
             </TouchableOpacity>
@@ -153,26 +130,51 @@ export default Login
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    gap: spacing.sm,
     paddingHorizontal: spacing.md,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: "transparent",
+  },
+  card: {
+    width: '100%',
+    backgroundColor: '#fff',
+    borderRadius: 24,
+    padding: spacing.lg,
+    shadowColor: accentColor,
+    shadowOffset: { width: 0, height: 8 },
+    shadowOpacity: 0.10,
+    shadowRadius: 16,
+    elevation: 8,
+    marginTop: verticalScale(40),
+    marginBottom: verticalScale(20),
+    alignItems: 'stretch',
   },
   form: {
     gap: spacing.sm,
+    marginBottom: spacing.sm,
   },
-  
+  loginButton: {
+    backgroundColor: accentColor,
+    borderRadius: 28,
+    paddingVertical: 14,
+    paddingHorizontal: 36,
+    alignItems: 'center',
+    marginTop: spacing.md,
+    shadowColor: accentColor,
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.18,
+    shadowRadius: 8,
+    elevation: 4,
+  },
   footer: {
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    color: colors.text,
-    fontSize: verticalScale(16),
+    marginTop: spacing.md,
   },
   forgotPasswordText: {
     alignSelf: 'flex-end',
-    fontSize: verticalScale(14),
-    color: colors.primary100,
-    textDecorationLine: 'underline',
     paddingBottom: verticalScale(8),
+    marginBottom: spacing.sm,
   },
-  
-})
+});
