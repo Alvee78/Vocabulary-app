@@ -62,20 +62,5 @@ export const userAppData = {
         totalMarks: 0,
         maxMarks:20,
         passedQuizzes: false,
-    },
-    achievements : [
-        { id: '1', title: 'First Quiz Completed', points: 50, unlocked: false },
-        { id: '2', title: 'Learned 100 Words', points: 100, unlocked: false },
-        { id: '3', title: '7-Day Streak', points: 70, unlocked: false },
-        { id: '4', title: 'Achieved 500 Points', points: 150, unlocked: false },
-        { id: '5', title: 'Completed All Chapters', points: 200, unlocked: false },
-        { id: '6', title: 'Shared App with Friends', points: 80, unlocked: false },
-        { id: '7', title: 'Participated in Feedback', points: 60, unlocked: false },
-        { id: '8', title: 'Daily Practice for a Month', points: 120, unlocked: false },
-        { id: '9', title: 'Mastered 50 New Words', points: 90, unlocked: false },
-        { id: '10', title: 'Achieved Perfect Score in Quiz', points: 200, unlocked: false },
-        { id: '11', title: 'Completed All Quizzes', points: 250, unlocked: false },
-        { id: '12', title: 'Engaged in Community Discussions', points: 100, unlocked: false },
-        // Add more achievements as you wish
-    ]
+    }
 }

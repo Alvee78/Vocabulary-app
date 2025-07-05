@@ -69,7 +69,7 @@ return (
       }}
     >
         <Tabs.Screen name="index" options={{ headerShown: false, title: 'Home', tabBarIcon: ({ color }) => (<Ionicons name='home' size={24} color={color} />) }} />
-        <Tabs.Screen name="rewards" options={{ headerShown: false, title: 'Rewards', tabBarIcon: ({ color }) => (<Ionicons name='trophy' size={24} color={color} />) }} />
+        <Tabs.Screen name="progress" options={{ headerShown: false, title: 'Progress', tabBarIcon: ({ color }) => (<Ionicons name='bar-chart' size={24} color={color} />) }} />
         <Tabs.Screen name="dictionary" options={{ headerShown: false, title: 'Dictionary', tabBarIcon: ({ color }) => (<Ionicons name='book' size={24} color={color} />) }} />
         <Tabs.Screen name="favorite" options={{ headerShown: false, title: 'Favorites', tabBarIcon: ({ color }) => (<Ionicons name='heart' size={24} color={color} />) }} />
         <Tabs.Screen name="settings" options={{ headerShown: false, title: 'Settings', tabBarIcon: ({ color }) => (<Ionicons name='settings' size={24} color={color} />) }} />

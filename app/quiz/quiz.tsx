@@ -73,8 +73,10 @@ const Quiz = () => {
         const parsedData = appData ? JSON.parse(appData) : {};
         parsedData[chapterNoInt].totalMarks = score > parsedData[chapterNoInt].totalMarks ? score : parsedData[chapterNoInt].totalMarks;
         parsedData[chapterNoInt].passedQuizzes = passedQuizzes(score, data.length);
-        if(parsedData[chapterNoInt].passedQuizzes && chapterNoInt < 10) {
+        if(parsedData[chapterNoInt].passedQuizzes && chapterNoInt < 10 && !parsedData[chapterNoInt + 1].unlocked) {
           parsedData[chapterNoInt + 1].unlocked = true;
+          parsedData.score += 10;
+          parsedData.level += 1;
         }
         const jsonString = JSON.stringify(parsedData);
         await AsyncStorage.setItem('appData', jsonString);

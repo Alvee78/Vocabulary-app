@@ -8,10 +8,12 @@ import {
   TouchableOpacity,
   Switch,
   ScrollView,
+  Linking,
 } from 'react-native';
 import SignOutButton from '../../Components/SignOutButton';
 import ScreenWrapper from '../../Components/ScreenWraper2';
 import { useTheme } from '../../context/ThemeContext';
+import { verticalScale } from 'react-native-size-matters';
 
 export default function SettingsScreen() {
   const [isNotificationsEnabled, setIsNotificationsEnabled] = React.useState(true);
@@ -23,6 +25,16 @@ export default function SettingsScreen() {
 
   // Dynamic styles based on theme
   const themedStyles = getThemedStyles(theme);
+
+  const openTerms = () => {
+    Linking.openURL('https://servicesonline.fwh.is/vocabulary.php?page=terms');
+  };
+  const openPrivacyPolicy = () => {
+    Linking.openURL('https://servicesonline.fwh.is/vocabulary.php?page=privacy');
+  };
+  const openAboutUs = () => {
+    Linking.openURL('https://servicesonline.fwh.is/vocabulary.php?page=version');
+  };
 
   return (
     <ScreenWrapper>
@@ -58,13 +70,16 @@ export default function SettingsScreen() {
           </TouchableOpacity> */}
 
           <Text style={themedStyles.sectionHeader}>About</Text>
-          <TouchableOpacity style={themedStyles.settingButton}>
+          <TouchableOpacity style={themedStyles.settingButton} onPress={openPrivacyPolicy}>
             <Text style={themedStyles.settingButtonText}>Privacy Policy</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={themedStyles.settingButton}>
+          <TouchableOpacity style={themedStyles.settingButton} onPress={openTerms}>
             <Text style={themedStyles.settingButtonText}>Terms of Service</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={themedStyles.settingButton }>
+          <TouchableOpacity style={themedStyles.settingButton} onPress={openAboutUs}>
+            <Text style={themedStyles.settingButtonText}>About Us</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={themedStyles.settingButton}>
             <Text style={themedStyles.settingButtonText}>App Version</Text>
             <Text style={themedStyles.settingValue}>1.0.0</Text>
           </TouchableOpacity>
@@ -121,6 +136,7 @@ function getThemedStyles(theme: 'light' | 'dark') {
       shadowOpacity: 0.12,
       shadowRadius: 4,
       elevation: 2,
+      height: verticalScale(50),
     },
     settingText: {
       fontSize: 18,
@@ -144,6 +160,7 @@ function getThemedStyles(theme: 'light' | 'dark') {
       elevation: 2,
       flexDirection: 'row',
       justifyContent: 'space-between',
+      height: verticalScale(50),
     },
     settingButtonText: {
       fontSize: 18,
