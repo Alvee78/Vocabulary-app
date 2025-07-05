@@ -21,7 +21,7 @@ import { userAppData } from '../../Data/appData';
 import { updateinsertUserAppData } from '../../config/CloudData/updateInsert';
 
 
-const Register2 = () => {
+const Otp = () => {
   const otpRef = useRef('');
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
@@ -130,7 +130,7 @@ useEffect(() => {
   );
 };
 
-export default Register2;
+export default Otp;
 
 const styles = StyleSheet.create({
   container: {

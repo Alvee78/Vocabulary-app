@@ -10,7 +10,7 @@ import { useRouter } from 'expo-router'
 import CustomButton2 from '../../Components/CustomButton2'
 import { LinearGradient } from 'expo-linear-gradient';
 
-const welcome = () => {
+const Welcome = () => {
   const router = useRouter();
   return (
     <ScreenWrapper>
@@ -72,7 +72,7 @@ const welcome = () => {
             entering={FadeInDown.duration(1000).delay(1000)}
             style={styles.buttonContainer}>
             <CustomButton2
-              onPress={() => router.push('/(auth)/welcome2')}
+              onPress={() => router.push('./welcome2')}
               style={styles.getStartedButton}
             >
               <Typography
@@ -90,7 +90,7 @@ const welcome = () => {
   )
 }
 
-export default welcome;
+export default Welcome;
 
 // const styles = StyleSheet.create({
 //   container: {

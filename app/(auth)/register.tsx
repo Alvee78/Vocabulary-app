@@ -148,7 +148,7 @@ const Register = () => {
               Already have an account?{' '}
             </Typography>
             <TouchableOpacity
-              onPress={() => router.replace('/(auth)/login')}
+              onPress={() => router.replace('./login')}
             >
               <Typography size={14} color={colors.warning} fontWeight={'700'}>
                 Log In

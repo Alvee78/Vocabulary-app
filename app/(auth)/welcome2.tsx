@@ -52,7 +52,7 @@ const ChooseAuth = () => {
                     entering={FadeInDown.duration(800).delay(500)}>
                     <CustomButton2
                     style = {styles.authButton }
-                    onPress={() => router.push('/(auth)/login')}
+                    onPress={() => router.push('login')}
                     >
                     <Typography
                       size={16}
@@ -66,7 +66,7 @@ const ChooseAuth = () => {
                 <Animated.View
                     entering={FadeInDown.duration(800).delay(700)}>
                     <CustomButton2
-                    onPress={() => router.push('/(auth)/register')}
+                    onPress={() => router.push('register')}
                     style = {styles.authButton }
                     >
                     <Typography

@@ -15,7 +15,7 @@ export default function Page() {
           <Redirect href={'../(tabs)'} />
         </SignedIn>
         <SignedOut>
-          <Redirect href={'../(auth)/welcome'} />
+          <Redirect href={'../(auth)'} />
         </SignedOut>
     </ScreenWrapper>
   )

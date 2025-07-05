@@ -64,7 +64,7 @@ export default function SettingsScreen() {
           <TouchableOpacity style={themedStyles.settingButton}>
             <Text style={themedStyles.settingButtonText}>Terms of Service</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={themedStyles.settingButton}>
+          <TouchableOpacity style={themedStyles.settingButton }>
             <Text style={themedStyles.settingButtonText}>App Version</Text>
             <Text style={themedStyles.settingValue}>1.0.0</Text>
           </TouchableOpacity>

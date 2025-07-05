@@ -1,7 +1,7 @@
 import  { useEffect, useRef, useState } from 'react'
 import ScreenWrapper from '../../Components/ScreenWrapper'
 import { colors, spacing } from '../../Constants/Theme'
-import welcome from './welcome'
+import welcome from '.'
 import { verticalScale } from 'react-native-size-matters'
 import Typography from '../../Components/Typography'
 import BackButton from '../../Components/backButton'
@@ -19,17 +19,17 @@ import React from 'react'
 import { useUser } from '@clerk/clerk-expo';
 import { loadUserAppData } from '../../config/CloudData/loadUserAppData'
 
-const login = () => {
-  const [isLoading, setIsLoading] = useState(false);
+const Login = () => {
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const router = useRouter();
   const { user} = useUser();
   const userId = user?.id;
   const { signIn, setActive, isLoaded } = useSignIn();
-  const [pendingLogin, setPendingLogin] = useState(false);
+  const [pendingLogin, setPendingLogin] = useState<boolean>(false);
 
 
-  const [emailAddress, setEmailAddress] = React.useState('');
-  const [password, setPassword] = React.useState('');
+  const [emailAddress, setEmailAddress] = React.useState<string>('');
+  const [password, setPassword] = React.useState<string>('');
 
   const handleLogin = () => {
     if(!emailAddress || !password) {
@@ -135,7 +135,7 @@ const login = () => {
               Don't have an account?{' '}
             </Typography>
             <TouchableOpacity
-              onPress={() => router.replace('/(auth)/register')}
+              onPress={() => router.replace('/register')}
             >
               <Typography size={14} color={colors.warning} fontWeight={'700'}>
                 Sign Up
@@ -148,7 +148,7 @@ const login = () => {
   )
 }
 
-export default login
+export default Login
 
 const styles = StyleSheet.create({
   container: {
