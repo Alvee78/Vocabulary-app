@@ -166,6 +166,7 @@ import {
 import { useSQLiteContext } from 'expo-sqlite'; // Only use useSQLiteContext, assuming SQLiteProvider is higher up
 import ScreenWrapper from '../../Components/ScreenWraper2';
 import { useTheme } from '../../context/ThemeContext';
+import CustomButton from '../../Components/CustomButton';
 
 // Define the database file name
 const DATABASE_NAME = 'dictionary.db';
@@ -426,13 +427,14 @@ export function Content() {
             <TextInput
               style={styles.input}
               placeholder="Word (required)"
+              placeholderTextColor={isDark ? '#ccc' : '#888'}
               value={newWord}
               onChangeText={setNewWord}
-              autoCapitalize="none"
             />
             <TextInput
               style={styles.input}
               placeholder="Meaning (required)"
+              placeholderTextColor={isDark ? '#ccc' : '#888'}
               value={newMeaning}
               onChangeText={setNewMeaning}
               autoCapitalize="none"
@@ -440,6 +442,7 @@ export function Content() {
             <TextInput
               style={styles.input}
               placeholder="Parts of Speech (e.g., noun, verb)"
+              placeholderTextColor={isDark ? '#ccc' : '#888'}
               value={newPartsOfSpeech}
               onChangeText={setNewPartsOfSpeech}
               autoCapitalize="none"
@@ -447,6 +450,7 @@ export function Content() {
             <TextInput
               style={styles.input}
               placeholder="Example sentence"
+              placeholderTextColor={isDark ? '#ccc' : '#888'}
               value={newExample}
               onChangeText={setNewExample}
               autoCapitalize="sentences"
@@ -474,7 +478,7 @@ export function Content() {
           onSubmitEditing={handleSearch}
           autoCapitalize="none"
         />
-        <Button title="Search" onPress={handleSearch} />
+        <CustomButton title="Search" onPress={handleSearch} style={styles.searchButton} />
       </View>
 
       {/* Display existing dictionary data */}
@@ -631,8 +635,8 @@ function getThemedStyles(theme: 'light' | 'dark') {
       borderRadius: 8,
       padding: 8,
       fontSize: 16,
-      backgroundColor: isDark ? '#232f47' : '#ffffff',
-      color: isDark ? '#e0e6f7' : '#222',
+      backgroundColor: isDark ? '#ccf' : '#ffffff',//still not visible in dark mode
+      color: isDark ? '#000' : '#222',
     },
     shuffleButton: {
       backgroundColor: isDark ? '#0057b8' : '#ffc107',
@@ -768,6 +772,18 @@ function getThemedStyles(theme: 'light' | 'dark') {
       color: '#ffffff',
       fontSize: 35,
       lineHeight: 35,
+    },
+    searchButton: {
+      backgroundColor: isDark ? '#0057b8' : '#ffc107',
+      paddingVertical: 10,
+      paddingHorizontal: 15,
+      borderRadius: 8,
+      alignItems: 'center',
+      shadowColor: isDark ? '#0057b8' : '#000',
+      shadowOffset: { width: 0, height: 2 },
+      shadowOpacity: 0.2,
+      shadowRadius: 3,
+      elevation: 3,
     },
   });
 }

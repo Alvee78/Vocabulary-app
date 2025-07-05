@@ -172,6 +172,7 @@ function getThemedStyles(theme: 'light' | 'dark') {
       backgroundColor: isDark ? '#22304a' : '#FFE5B4', // dark blue card in dark
       borderRadius: 22,
       marginHorizontal: 10,
+      marginTop: 7,
       marginBottom: 10,
       padding: 15,
       elevation: 5,
